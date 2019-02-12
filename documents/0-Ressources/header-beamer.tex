@@ -1,0 +1,58 @@
+\documentclass[11pt]{beamer}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumerate}
+\usepackage{fancybox} %pour avoir des boîtes, CF commandes custom plus loin
+\usepackage{fancyvrb}
+\usepackage{changepage} %changer la dimension d'une slide
+\usepackage{verbatimbox}
+\usepackage{pifont} %pour utiliser les ding (puces stylées)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Définition de nouvelles commandes
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\shadowsize}{2pt}
+\newcommand{\Cadre}[1]{
+\begin{center}
+\setlength{\fboxsep}{10pt}
+\shadowbox{
+\begin{minipage}{17cm}
+#1
+\end{minipage}
+}
+\end{center}}
+
+\newcommand{\cadre}[2]{
+\begin{center}
+\boxput*(0,1){\colorbox{white}{\textsc{#1}}}
+{
+\setlength{\fboxsep}{10pt}
+\shadowbox{
+\begin{minipage}{8cm}
+#2
+\end{minipage}
+}}
+\end{center}}
+
+\newcommand{\cadreOval}[2]{
+\begin{center}
+\boxput*(0,1){\colorbox{white}{\textsc{#1}}}
+{
+\setlength{\fboxsep}{10pt}
+\Ovalbox{
+\begin{minipage}{10.7cm}
+#2
+\end{minipage}
+}}
+\end{center}}
+
+\newcommand{\ligne}{\begin{center}
+	\rule{\linewidth}{.5pt}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{Warsaw}

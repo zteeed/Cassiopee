@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}    % need for subequations
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}   % need for figures
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
+\usepackage{afterpage}  % create blank page
+\usepackage{appendix}   % create appendix
+\usepackage[a4paper, margin=2cm]{geometry} % change margins
+% \usepackage[french]{babel} % permet guillemets etc
+\usepackage[british,UKenglish,USenglish,english,american]{babel}
+\usepackage{wrapfig}
+\usepackage{sectsty} % color title
+\usepackage{eurosym}
+\usepackage{tabularx}
+\usepackage{anyfontsize}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{minitoc}
+
+%%%% Couleur des titres
+\definecolor{green}{RGB}{134,188,37}
+\definecolor{blue}{RGB}{98,181,229}
+\definecolor{teal}{RGB}{0,151,169}
+
+%%%% Themes
+\fancypagestyle{theme}{
+\fancyhf{}
+\fancyhead[L]{}\fancyhead[C]{}\fancyhead[R]{\rightmark}
+\fancyfoot[L]{Cassiopée 2018-2019}\fancyfoot[C]{\thepage}\fancyfoot[R]{}
+\renewcommand*\headrulewidth{1pt}
+\renewcommand{\footrulewidth}{1pt}
+}
+
+%%% Box
+\newcommand{\titlebox}[2]{%
+\tikzstyle{titlebox}=[rectangle,inner sep=10pt,inner ysep=10pt,draw]%
+\tikzstyle{title}=[fill=white]%
+%
+\bigskip\noindent\begin{tikzpicture}
+\node[titlebox] (box){%
+    \begin{minipage}{0.94\textwidth}
+#2
+    \end{minipage}
+};
+%\draw (box.north west)--(box.north east);
+\node[title] at (box.north) {#1};
+\end{tikzpicture}\bigskip%
+}
+
+%%% Table
+\usepackage{array,booktabs}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{hhline}
+\newcolumntype{x}[1]
+{>{\raggedright}p{#1}}
+\newcolumntype{z}[1]
+{>{\centering}p{#1}}
+\newcommand{\tn}{\tabularnewline}
+\renewcommand\tabularxcolumn[1]{>{\Centering}m{#1}}  
+
+%%% Custom
+\newcommand{\ptitle}[1]{\underline{\textsc{#1}} }
+\newcommand{\Q}{\underline{\textsc{Question :}} }
+
+\pagestyle{theme}
