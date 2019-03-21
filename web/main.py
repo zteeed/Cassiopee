@@ -5,6 +5,8 @@ from flask_login.utils import current_user, login_user, logout_user
 
 from config import app, db
 from tables import Users
+from functions import is_admin, debug_print, is_safe_url, get_redirect_target
+
 
 
 @app.route('/')
@@ -14,7 +16,6 @@ def index():
 
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
-    return render_template('login.html')
     if current_user.is_authenticated:
         return redirect(url_for('admin.index'))
     if request.method == 'GET':
