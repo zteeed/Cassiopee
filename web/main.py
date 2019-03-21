@@ -14,7 +14,8 @@ from proxmox_functions import proxmox_data, select_vm
 @login_required
 def index():
     fields = ['id', 'name', 'status', 'node']
-    return render_template('index.html', fields = fields, vms = proxmox_data())
+    return render_template('index.html', fields = fields, vms = proxmox_data(),
+                           username = current_user.name)
 
 
 @app.route('/<string:node>/<string:type>/<int:id>')
