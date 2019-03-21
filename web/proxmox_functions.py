@@ -1,4 +1,4 @@
-from secrets import ip, user, password, verify_ssl
+from secrets_use import ip, user, password, verify_ssl
 from proxmoxer import ProxmoxAPI
 
 
