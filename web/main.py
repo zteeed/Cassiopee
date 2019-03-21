@@ -18,6 +18,14 @@ def index():
     return render_template('index.html', fields = fields, vms = proxmox_data())
 
 
+@app.route('/<string:node>/<int:id>')
+def show_vm(node, id):
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    fields = ['id', 'name', 'status', 'node']
+    return render_template('index.html', fields = fields, vms = proxmox_data())
+
+
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
     if current_user.is_authenticated:
