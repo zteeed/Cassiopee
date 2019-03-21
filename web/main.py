@@ -6,7 +6,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from config import app, db
 from tables import Users
 from functions import is_admin, debug_print, is_safe_url, get_redirect_target
-from proxmox_functions import proxmox_data
+from proxmox_functions import proxmox_data, select_vm
 
 
 
@@ -22,8 +22,8 @@ def index():
 def show_vm(node, id):
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    fields = ['id', 'name', 'status', 'node']
-    return render_template('index.html', fields = fields, vms = proxmox_data())
+    vm = select_vm(node, id)
+    return render_template('show_vm.html', vm=vm)
 
 
 @app.route('/login', methods = ['GET', 'POST']) 

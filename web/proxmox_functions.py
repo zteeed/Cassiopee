@@ -18,3 +18,11 @@ def proxmox_data():
     vms = proxmox.cluster.resources.get(type='vm')
     vms = sort_vms(vms)
     return vms
+
+
+def select_vm(node, id):
+    vms = proxmox_data()
+    for vm in vms:
+        if vm['node'] == node and int(vm['id'].split('/')[1]) == id:
+            return vm
+    return None
