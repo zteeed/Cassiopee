@@ -36,7 +36,7 @@ class UsersModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
     def inaccessible_callback(self, name, **kwargs):
-        flash('Accès interdit ! Veuillez vous identifier.', 'error')
+        flash('Access forbidden ! Please identify yourself.', 'error')
         return redirect(url_for('login'))
 
 
@@ -46,7 +46,7 @@ class DefaultModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated
     def inaccessible_callback(self, name, **kwargs):
-        flash('Accès interdit ! Veuillez vous identifier.', 'error')
+        flash('Access forbidden ! Please identify yourself.', 'error')
         return redirect(url_for('login'))
 
 
@@ -57,13 +57,13 @@ class MyAdminView(AdminIndexView):
     def is_accessible(self):
         return current_user.is_authenticated
     def inaccessible_callback(self, name, **kwargs):
-        flash('Accès interdit !', 'error')
+        flash('Access forbidden ! Please identify yourself.', 'error')
         return redirect(url_for('login'))
     def _handle_view(self, name, *args, **kwargs):
         if not current_user.is_authenticated:
             return redirect(url_for('login'))
         if not self.is_accessible():
-            flash('Accès interdit ! Veuillez vous identifier.', 'error')
+            flash('Access forbidden ! Please identify yourself.', 'error')
             return redirect(url_for('login'))
 
 

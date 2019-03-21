@@ -24,10 +24,10 @@ def login():
     if verify:
         login_user(user) 
         nextTarget = get_redirect_target() 
-        flash('Vous êtes connecté en tant qu\'administrateur.', 'success')
+        flash('You are logged in as an administrator', 'success')
         return redirect(nextTarget or url_for('admin.index')) 
     else:
-        flash('Echec de l\'authentification.', 'error')
+        flash('Authentication failure.', 'error')
         return redirect(url_for('login')) 
 
 
@@ -38,10 +38,10 @@ def logout():
         return redirect(url_for('index'))
     try:
         logout_user()
-        flash('Déconnexion effectuée avec succès.', 'success')
+        flash('Logout done successfully.', 'success')
     except Exception as exception:
         print(exception)
-        flash('Une erreur est survenue lors de la deconnection.', 'error')
+        flash('An error occurred while logging out.', 'error')
     return redirect(url_for('index'))
 
 
