@@ -25,6 +25,14 @@ def show_vm(node, type, id):
     return render_template('show_vm.html', vm=vm)
 
 
+@app.route('/settings/admin')
+@login_required
+def settings_admin():
+    if request.method == 'GET':
+        return render_template('settings_admin.html')
+    return render_template('settings_admin.html')
+
+
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
     if request.method == 'GET':
