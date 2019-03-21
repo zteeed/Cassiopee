@@ -20,10 +20,10 @@
                 </div>
                 <form id="loginForm" name="loginForm" class="user" method='post' action='/login'>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="exampleInputUsername" placeholder="Enter Username...">
+                    <input type="text" name="username" class="form-control form-control-user" id="exampleInputUsername" placeholder="Enter Username...">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                   </div>
                   <a onclick="document.forms['loginForm'].submit(); return false;" 
                     class="btn btn-primary btn-user btn-block"
