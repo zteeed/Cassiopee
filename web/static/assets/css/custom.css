@@ -1,0 +1,6 @@
+.bg-custom {
+  background-image: url("/static/img/background.jpg");
+}
+.bg-login-custom {
+  background-image: url("/static/img/login.png");
+}
