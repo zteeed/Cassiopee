@@ -11,13 +11,16 @@ from functions import is_admin, debug_print, is_safe_url, get_redirect_target
 
 @app.route('/')
 def index():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
     if current_user.is_authenticated:
-        return redirect(url_for('admin.index'))
+        #return redirect(url_for('admin.index'))
+        return redirect(url_for('index'))
     if request.method == 'GET':
         return render_template('login.html')
     user, verify = is_admin(app, db, request.form)
@@ -43,11 +46,6 @@ def logout():
         print(exception)
         flash('An error occurred while logging out.', 'error')
     return redirect(url_for('index'))
-
-
-@app.route('/register') 
-def register(): 
-    return render_template('register.html')
 
 
 if __name__=='__main__':
