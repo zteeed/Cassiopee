@@ -56,5 +56,23 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.errorhandler(403)
+def forbidden(error):
+    flash('Error {}'.format(error), 'error')
+    return redirect(url_for('index')) 
+
+
+@app.errorhandler(404)
+def not_found(error):
+    flash('Error {}'.format(error), 'error')
+    return redirect(url_for('index')) 
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    flash('Error {}'.format(error), 'error')
+    return redirect(url_for('index')) 
+
+
 if __name__=='__main__':
     app.run(host='0.0.0.0', debug=True)
