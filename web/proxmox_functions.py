@@ -20,9 +20,10 @@ def proxmox_data():
     return vms
 
 
-def select_vm(node, id):
+def select_vm(node, type, id):
     vms = proxmox_data()
     for vm in vms:
-        if vm['node'] == node and int(vm['id'].split('/')[1]) == id:
+        if vm['node'] == node and vm['id'] == '{}/{}'.format(type, id):
+            print(vm)
             return vm
     return None

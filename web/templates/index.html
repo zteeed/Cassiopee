@@ -30,7 +30,11 @@
           {% for vm in vms %}
             <tr>
               {% for field in fields %}
-                <td>{{ vm[field] }}</td>
+                {% if field == 'id' %}
+                  <td><a href="/{{ vm['node'] }}/{{ vm['id'] }}">{{ vm[field] }}</a></td>
+                {% else %}
+                  <td>{{ vm[field] }}</td>
+                {% endif %}
               {% endfor %}
             </tr>
           {% endfor %}

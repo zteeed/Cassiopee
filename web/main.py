@@ -18,11 +18,11 @@ def index():
     return render_template('index.html', fields = fields, vms = proxmox_data())
 
 
-@app.route('/<string:node>/<int:id>')
-def show_vm(node, id):
+@app.route('/<string:node>/<string:type>/<int:id>')
+def show_vm(node, type, id):
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    vm = select_vm(node, id)
+    vm = select_vm(node, type, id)
     return render_template('show_vm.html', vm=vm)
 
 
