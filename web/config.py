@@ -8,7 +8,7 @@ from flask_babel import Babel
 from flask_security import login_required, Security, SQLAlchemyUserDatastore 
 import hashlib
 
-from secrets import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_PASSWORD
+from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_PASSWORD
 
 app = Flask(__name__)
 app.debug = True

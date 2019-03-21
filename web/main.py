@@ -6,6 +6,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from config import app, db
 from tables import Users
 from functions import is_admin, debug_print, is_safe_url, get_redirect_target
+from proxmox_functions import proxmox_data
 
 
 
