@@ -14,7 +14,8 @@ from proxmox_functions import proxmox_data
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    return render_template('index.html')
+    fields = ['id', 'name', 'status', 'node']
+    return render_template('index.html', fields = fields, vms = proxmox_data())
 
 
 @app.route('/login', methods = ['GET', 'POST']) 
