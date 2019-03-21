@@ -19,7 +19,6 @@ def index():
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
     if current_user.is_authenticated:
-        #return redirect(url_for('admin.index'))
         return redirect(url_for('index'))
     if request.method == 'GET':
         return render_template('login.html')
@@ -28,7 +27,7 @@ def login():
         login_user(user) 
         nextTarget = get_redirect_target() 
         flash('You are logged in as an administrator', 'success')
-        return redirect(nextTarget or url_for('admin.index')) 
+        return redirect(nextTarget or url_for('index'))
     else:
         flash('Authentication failure.', 'error')
         return redirect(url_for('login')) 
@@ -36,7 +35,6 @@ def login():
 
 @app.route('/logout') 
 def logout(): 
-    return render_template('login.html')
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     try:
