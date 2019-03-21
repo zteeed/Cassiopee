@@ -40,6 +40,14 @@ def login():
         return redirect(url_for('index')) 
 
 
+@app.route('/forgot', methods = ['GET', 'POST']) 
+def forgot(): 
+    if request.method == 'GET':
+        return render_template('forgot-password.html')
+    """ TODO: use flask mail to reset user password """
+    return render_template('forgot-password.html')
+
+
 @app.route('/logout') 
 @login_required
 def logout(): 
