@@ -8,7 +8,7 @@ from flask_babel import Babel
 from flask_security import login_required, Security, SQLAlchemyUserDatastore 
 import hashlib
 
-from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_PASSWORD
+from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, DEFAULT_ADMIN_PASSWORD
 
 app = Flask(__name__)
 app.debug = True
@@ -86,7 +86,8 @@ def create_user():
     users = Users.query.all()
     if len(users) > 0: return
     password = hashlib.sha512(DEFAULT_ADMIN_PASSWORD.encode()).hexdigest()
-    kwargs = {'name': DEFAULT_ADMIN_USERNAME, 'password': password}
+    kwargs = {'name': DEFAULT_ADMIN_USERNAME, 'email': DEFAULT_ADMIN_EMAIL, 
+              'password': password}
     user = Users(**kwargs)
     db.session.add(user)
     db.session.commit()

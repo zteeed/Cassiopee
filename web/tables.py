@@ -6,6 +6,7 @@ class Users(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), unique=True, nullable=False)
+    email = db.Column(db.String(200), unique=True, nullable=False)
     password = db.Column(db.String(200), unique=False, nullable=True)
 
     def __repr__(self):
