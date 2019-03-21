@@ -5,31 +5,27 @@ from flask_login.utils import current_user, login_user, logout_user
 
 from config import app, db
 from tables import Users
-from functions import is_admin, debug_print, is_safe_url, get_redirect_target
+from functions import login_required, is_admin, debug_print, is_safe_url, get_redirect_target
 from proxmox_functions import proxmox_data, select_vm
 
 
 
 @app.route('/')
+@login_required
 def index():
-    if not current_user.is_authenticated:
-        return redirect(url_for('login'))
     fields = ['id', 'name', 'status', 'node']
     return render_template('index.html', fields = fields, vms = proxmox_data())
 
 
 @app.route('/<string:node>/<string:type>/<int:id>')
+@login_required
 def show_vm(node, type, id):
-    if not current_user.is_authenticated:
-        return redirect(url_for('login'))
     vm = select_vm(node, type, id)
     return render_template('show_vm.html', vm=vm)
 
 
 @app.route('/login', methods = ['GET', 'POST']) 
 def login(): 
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
     if request.method == 'GET':
         return render_template('login.html')
     user, verify = is_admin(app, db, request.form)
@@ -40,13 +36,12 @@ def login():
         return redirect(nextTarget or url_for('index'))
     else:
         flash('Authentication failure.', 'error')
-        return redirect(url_for('login')) 
+        return redirect(url_for('index')) 
 
 
 @app.route('/logout') 
+@login_required
 def logout(): 
-    if not current_user.is_authenticated:
-        return redirect(url_for('index'))
     try:
         logout_user()
         flash('Logout done successfully.', 'success')

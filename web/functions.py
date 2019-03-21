@@ -1,8 +1,19 @@
-from flask import flash, request
+from functools import wraps
+from flask import flash, request, render_template
+from flask_login.utils import current_user
 from urllib.parse import urlparse, urljoin
 import hashlib
 
 from tables import Users
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated:
+            return render_template('login.html')
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 def debug_print(app, form):
