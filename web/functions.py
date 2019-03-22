@@ -72,3 +72,16 @@ def update_password(app, db, form):
             return False
     else:
         return False
+
+
+def add_admin(app, db, form):
+    kwargs = {}
+    try:
+        for item in form.keys():
+            kwargs[item] = form[item]
+        user = Users(**kwargs)
+        db.session.add(user)
+        db.session.commit()
+        return True
+    except Exception as exception:
+        return False
