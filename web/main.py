@@ -5,7 +5,8 @@ from flask_login.utils import current_user, login_user, logout_user
 
 from config import app, db
 from tables import Users
-from functions import login_required, is_admin, debug_print, is_safe_url, get_redirect_target
+from functions import login_required, is_admin, debug_print, is_safe_url, \
+get_redirect_target, update_password
 from proxmox_functions import proxmox_data, select_vm
 
 
@@ -25,12 +26,17 @@ def show_vm(node, type, id):
     return render_template('show_vm.html', vm=vm)
 
 
-@app.route('/settings/admin')
+@app.route('/settings/reset_admin', methods = ['GET', 'POST'])
 @login_required
-def settings_admin():
+def settings_reset_admin():
     if request.method == 'GET':
-        return render_template('settings_admin.html')
-    return render_template('settings_admin.html')
+        return render_template('settings_reset_admin.html')
+    is_valid = update_password(app, db, request.form)
+    if is_valid:
+        flash('Your password has been updated successfully.', 'success')
+    else:
+        flash('An error occurred while trying to update your password.', 'error')
+    return render_template('settings_reset_admin.html')
 
 
 @app.route('/login', methods = ['GET', 'POST']) 

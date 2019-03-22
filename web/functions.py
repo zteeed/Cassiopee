@@ -58,3 +58,17 @@ def is_admin(app, db, form):
         return req, True
     else:
         return None, False
+
+
+def update_password(app, db, form):
+    kwargs = dict(name=current_user.name)
+    req = db.session.query(Users).filter_by(**kwargs).first()
+    if req is not None:
+        try:
+            req.password = hashlib.sha512(form['password'].encode()).hexdigest()
+            db.session.commit()
+            return True
+        except Exception as exception:
+            return False
+    else:
+        return False

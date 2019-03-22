@@ -11,16 +11,16 @@
 	<div class="text-center">
 	  <h1 class="h4 text-gray-900 mb-4">Reset your password</h1>
 	</div>
-	<form id="resetForm" name="resetForm" class="user">
+	<form id="resetForm" name="resetForm" class="user" method='post' action='/settings/reset_admin'>
 	  <div class="form-group row">
 	    <div class="col-sm-6 mb-3 mb-sm-0">
-	      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+	      <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
 	    </div>
 	    <div class="col-sm-6">
-	      <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+	      <input type="password" name="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
 	    </div>
 	  </div>
-          <a onclick="document.forms['resetForm'].submit(); return false;" 
+          <a onclick="verify_passwords()" 
           class="btn btn-primary btn-user btn-block"
           style="color: white">
 	    Reset Password
