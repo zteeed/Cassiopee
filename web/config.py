@@ -1,16 +1,19 @@
 from flask import Flask, flash, redirect, url_for
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
+from flask_babel import Babel
 from flask_login import LoginManager
 from flask_login.utils import current_user
-from flask_sqlalchemy import SQLAlchemy
-from flask_babel import Babel
+from flask_mail import Mail
 from flask_security import login_required, Security, SQLAlchemyUserDatastore 
+from flask_sqlalchemy import SQLAlchemy
 import hashlib
 
 from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, DEFAULT_ADMIN_PASSWORD
 
 app = Flask(__name__)
+mail = Mail(app)
+mail.init_app(app)
 app.debug = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 """ Default SQLALCHEMY_DATABASE_URI """

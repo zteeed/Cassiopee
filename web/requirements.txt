@@ -2,6 +2,7 @@ flask
 flask_admin
 flask_babel
 flask_login
+flask_mail
 flask_security
 flask_sqlalchemy
 psycopg2

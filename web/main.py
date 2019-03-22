@@ -6,7 +6,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from config import app, db
 from tables import Users
 from functions import login_required, is_admin, debug_print, is_safe_url, \
-get_redirect_target, update_password, add_admin
+get_redirect_target, update_password, add_admin, send_email
 from proxmox_functions import proxmox_data, select_vm
 
 
@@ -71,7 +71,12 @@ def login():
 def forgot(): 
     if request.method == 'GET':
         return render_template('forgot-password.html')
-    """ TODO: use flask mail to reset user password """
+    is_valid, email = send_email(app, db, request.form)
+    if is_valid:
+        flash('An email has been sent to <u>{}</u>'.format(email), 'success')
+    else:
+        flash('An error occurred while trying to send your new password by '
+              'email, you might have been provided a wront username or email.', 'error')
     return render_template('forgot-password.html')
 
 

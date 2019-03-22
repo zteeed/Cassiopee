@@ -1,10 +1,12 @@
 from functools import wraps
 from flask import flash, request, render_template
 from flask_login.utils import current_user
+from flask_mail import Message
 from urllib.parse import urlparse, urljoin
 import hashlib
 
 from tables import Users
+from config import mail
 
 
 def login_required(f):
@@ -85,3 +87,23 @@ def add_admin(app, db, form):
         return True
     except Exception as exception:
         return False
+
+
+def get_user(field, form, db):
+    try:
+        kwargs = {field: form['forgot']}
+        return db.session.query(Users).filter_by(**kwargs).first()
+    except Exception as exception:
+        return None
+
+
+def send_email(app, db, form):
+    fields = ['name', 'email']
+    options = [ get_user(field, form, db) for field in fields ]
+    if options == [None]*len(options):
+        return False, None
+    option = [ i for i in options if i != None ][0]
+    email = option.email
+    msg = Message("Hello", sender="test@hackademint.org", recipients=[email])
+    mail.send(msg)
+    return True, email
