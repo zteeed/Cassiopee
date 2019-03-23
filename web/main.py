@@ -31,11 +31,7 @@ def show_vm(node, type, id):
 def settings_reset_admin():
     if request.method == 'GET':
         return render_template('settings_reset_admin.html')
-    is_valid = update_password(app, db, request.form)
-    if is_valid:
-        flash('Your password has been updated successfully.', 'success')
-    else:
-        flash('An error occurred while trying to update your password.', 'error')
+    result = update_password(app, db, request.form)
     return render_template('settings_reset_admin.html')
 
 

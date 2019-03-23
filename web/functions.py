@@ -62,17 +62,30 @@ def is_admin(app, db, form):
         return None, False
 
 
+def is_password_verified(db, password):
+    password = hashlib.sha512(password.encode()).hexdigest()
+    kwargs = dict(name = current_user.name, password = password)
+    req = db.session.query(Users).filter_by(**kwargs).first()
+    return req is not None
+
+
 def update_password(app, db, form):
+    checks = [ (field in form.keys()) for field in ['password', 'previous_password']]
+    if False in checks:
+        flash('An error occurred while trying to update your password.', 'error')
+        return False
+    if not is_password_verified(db, form['previous_password']):
+        flash('Wrong previous password.', 'error')
+        return False
     kwargs = dict(name=current_user.name)
     req = db.session.query(Users).filter_by(**kwargs).first()
     if req is not None:
-        try:
-            req.password = hashlib.sha512(form['password'].encode()).hexdigest()
-            db.session.commit()
-            return True
-        except Exception as exception:
-            return False
+        req.password = hashlib.sha512(form['password'].encode()).hexdigest()
+        db.session.commit()
+        flash('Your password has been updated successfully.', 'success')
+        return True
     else:
+        flash('An error occurred while trying to update your password.', 'error')
         return False
 
 
