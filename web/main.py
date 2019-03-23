@@ -6,7 +6,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from config import app, db
 from tables import Users
 from functions import login_required, is_admin, debug_print, is_safe_url, \
-get_redirect_target, update_password, add_admin, send_email
+get_redirect_target, update_password, add_admin, send_email, update_email
 from proxmox_functions import proxmox_data, select_vm
 
 
@@ -26,14 +26,6 @@ def show_vm(node, type, id):
     return render_template('show_vm.html', vm=vm)
 
 
-@app.route('/settings/reset_admin', methods = ['GET', 'POST'])
-@login_required
-def settings_reset_admin():
-    if request.method == 'GET':
-        return render_template('settings_reset_admin.html')
-    result = update_password(app, db, request.form)
-    return render_template('settings_reset_admin.html')
-
 
 @app.route('/settings/add_admin', methods = ['GET', 'POST'])
 @login_required
@@ -46,6 +38,24 @@ def settings_add_admin():
     else:
         flash('An error occurred while creating a new administrator', 'error')
     return render_template('settings_add_admin.html')
+
+
+@app.route('/settings/update_admin', methods = ['GET', 'POST'])
+@login_required
+def settings_update_admin():
+    kwargs = {'name': current_user.name}
+    user = db.session.query(Users).filter_by(**kwargs).first()
+    if request.method == 'POST':
+        result = update_email(app, db, request.form)
+    return render_template('settings_update_admin.html', email = user.email)
+
+
+@app.route('/settings/reset_admin', methods = ['GET', 'POST'])
+@login_required
+def settings_reset_admin():
+    if request.method != 'POST':
+        result = update_password(app, db, request.form)
+    return render_template('settings_reset_admin.html')
 
 
 @app.route('/login', methods = ['GET', 'POST']) 

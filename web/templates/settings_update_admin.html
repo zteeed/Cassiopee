@@ -1,0 +1,36 @@
+{% extends "base_dashboard.html" %}
+{% block tables %}
+<!-- Page Heading -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary"></h6>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="p-5">
+	<div class="text-center">
+	  <h1 class="h4 text-gray-900 mb-4">Reset your password</h1>
+	</div>
+	<form id="updateForm" name="updateForm" class="user" method='post' action='/settings/update_admin'>
+	  <div class="form-group row">
+            <div class="col-sm-12 mb-6 mb-sm-0">
+              <p>Your current email is: {{ email }}</p>
+            </div>
+          </div>
+	  <div class="form-group row">
+	    <div class="col-sm-12 mb-6 mb-sm-0">
+	      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email">
+	    </div>
+	  </div>
+          <a onclick="document.forms['updateForm'].submit(); return false;" 
+          class="btn btn-primary btn-user btn-block"
+          style="color: white">
+	    Reset Password
+	  </a>
+	</form>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

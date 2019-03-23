@@ -120,3 +120,20 @@ def send_email(app, db, form):
     msg = Message("Hello", sender="test@hackademint.org", recipients=[email])
     mail.send(msg)
     return True, email
+
+
+def update_email(app, db, form):
+    checks = [ (field in form.keys()) for field in ['email']]
+    if False in checks:
+        flash('An error occurred while trying to update your email.', 'error')
+        return False
+    kwargs = dict(name=current_user.name)
+    req = db.session.query(Users).filter_by(**kwargs).first()
+    if req is not None:
+        req.email = form['email']
+        db.session.commit()
+        flash('Your email has been updated successfully.', 'success')
+        return True
+    else:
+        flash('An error occurred while trying to update your email.', 'error')
+        return False
