@@ -19,11 +19,6 @@ def login_required(f):
     return decorated_function
 
 
-def debug_print(app, form):
-    debug_message = '\n'.join([ str({field: form[field]}) for field in form ])
-    app.logger.debug('POST Request: %s', '\n' + debug_message)
-
-
 def is_safe_url(target): 
     ref_url = urlparse(request.host_url) 
     test_url = urlparse(urljoin(request.host_url, target)) 

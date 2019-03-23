@@ -5,8 +5,8 @@ from flask_login.utils import current_user, login_user, logout_user
 
 from config import app, db
 from tables import Users
-from functions import login_required, is_admin, debug_print, is_safe_url, \
-get_redirect_target, update_password, add_admin, send_email_reset_password, update_email
+from functions import login_required, is_admin, is_safe_url, get_redirect_target \
+update_password, add_admin, send_email_reset_password, update_email
 from proxmox_functions import proxmox_data, select_vm
 
 
