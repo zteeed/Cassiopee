@@ -76,7 +76,7 @@ def forgot():
         flash('An email has been sent to <u>{}</u>'.format(email), 'success')
     else:
         flash('An error occurred while trying to send your new password by '
-              'email, you might have been provided a wront username or email.', 'error')
+              'email, you might have been provided a wrong username or email.', 'error')
     return render_template('forgot-password.html')
 
 
