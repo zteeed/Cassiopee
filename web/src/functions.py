@@ -1,22 +1,12 @@
-from functools import wraps
-from flask import flash, request, render_template
+from flask import flash, request
 from flask_login.utils import current_user
 from flask_mail import Message
 from urllib.parse import urlparse, urljoin
 import random, string
 
-from tables import Users
-from config import mail, pwd_context
-from secrets_use import MAIL_USERNAME
-
-
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if not current_user.is_authenticated:
-            return render_template('login.html')
-        return f(*args, **kwargs)
-    return decorated_function
+from config.tables import Users
+from config.config import mail, pwd_context
+from config.secrets_use import MAIL_USERNAME
 
 
 def is_safe_url(target): 

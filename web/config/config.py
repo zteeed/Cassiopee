@@ -10,9 +10,9 @@ from flask_sqlalchemy import SQLAlchemy
 from passlib.context import CryptContext
 
 
-from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, \
+from config.secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, \
 DEFAULT_ADMIN_PASSWORD, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, \
-MAIL_USE_TLS, MAIL_USE_SSL
+MAIL_USE_TLS, MAIL_USE_SSL, DEBUG
 
 
 pwd_context = CryptContext(
@@ -46,13 +46,11 @@ class Config(object):
 app = Flask(__name__)
 app.config.from_object(Config)
 mail = Mail(app)
-#mail.init_app(app)
-app.debug = True
+app.debug = DEBUG
 db = SQLAlchemy(app)
 babel = Babel(app)
 
-from tables import Users 
-
+from config.tables import Users 
 
 class UsersModelView(ModelView):
     page_size = 5

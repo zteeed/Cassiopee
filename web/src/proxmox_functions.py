@@ -1,5 +1,5 @@
-from secrets_use import ip, user, password, verify_ssl
 from proxmoxer import ProxmoxAPI
+from config.secrets_use import ip, user, password, verify_ssl
 
 
 def sort_vms(vms):
@@ -24,6 +24,5 @@ def select_vm(node, type, id):
     vms = proxmox_data()
     for vm in vms:
         if vm['node'] == node and vm['id'] == '{}/{}'.format(type, id):
-            print(vm)
             return vm
     return None

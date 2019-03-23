@@ -2,13 +2,22 @@ from flask import Flask
 from flask import flash, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login.utils import current_user, login_user, logout_user 
+from functools import wraps
 
-from config import app, db
-from tables import Users
-from functions import login_required, is_admin, is_safe_url, get_redirect_target, \
+from config.config import app, db
+from config.tables import Users
+from src.functions import is_admin, is_safe_url, get_redirect_target, \
 update_password, add_admin, send_email_reset_password, update_email
-from proxmox_functions import proxmox_data, select_vm
+from src.proxmox_functions import proxmox_data, select_vm
 
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_authenticated:
+            return render_template('login.html')
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 @app.route('/')
@@ -109,7 +118,6 @@ def logout():
         logout_user()
         flash('Logout done successfully.', 'success')
     except Exception as exception:
-        print(exception)
         flash('An error occurred while logging out.', 'error')
     return redirect(url_for('index'))
 

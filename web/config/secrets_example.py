@@ -17,3 +17,6 @@ MAIL_USERNAME = 'username@gmail.com'
 MAIL_PASSWORD = 'password'     
 MAIL_USE_TLS = True 
 MAIL_USE_SSL = False
+
+""" Misc """
+DEBUG = True
