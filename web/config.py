@@ -7,12 +7,17 @@ from flask_login.utils import current_user
 from flask_mail import Mail
 from flask_security import login_required, Security, SQLAlchemyUserDatastore 
 from flask_sqlalchemy import SQLAlchemy
-import hashlib
+from passlib.context import CryptContext
 
 
 from secrets_use import SECRET_KEY, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_EMAIL, \
 DEFAULT_ADMIN_PASSWORD, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, \
 MAIL_USE_TLS, MAIL_USE_SSL
+
+
+pwd_context = CryptContext(
+        schemes=["pbkdf2_sha256", "des_crypt"],
+        deprecated="auto")
 
 
 class Config(object):
@@ -93,7 +98,7 @@ def create_user():
     db.create_all()
     users = Users.query.all()
     if len(users) > 0: return
-    password = hashlib.sha512(DEFAULT_ADMIN_PASSWORD.encode()).hexdigest()
+    password = pwd_context.hash(DEFAULT_ADMIN_PASSWORD)
     kwargs = {'name': DEFAULT_ADMIN_USERNAME, 'email': DEFAULT_ADMIN_EMAIL, 
               'password': password}
     user = Users(**kwargs)

@@ -36,7 +36,8 @@ def settings_add_admin():
     if is_valid:
         flash('{} is now an administrator.'.format(request.form['name']), 'success')
     else:
-        flash('An error occurred while creating a new administrator', 'error')
+        flash('An error occurred while creating a new administrator. The email '
+              'or username might be already used.', 'error')
     return render_template('settings_add_admin.html')
 
 
@@ -53,7 +54,7 @@ def settings_update_admin():
 @app.route('/settings/reset_admin', methods = ['GET', 'POST'])
 @login_required
 def settings_reset_admin():
-    if request.method != 'POST':
+    if request.method == 'POST':
         result = update_password(app, db, request.form)
     return render_template('settings_reset_admin.html')
 

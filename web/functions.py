@@ -3,10 +3,10 @@ from flask import flash, request, render_template
 from flask_login.utils import current_user
 from flask_mail import Message
 from urllib.parse import urlparse, urljoin
-import hashlib, random, string
+import random, string
 
 from tables import Users
-from config import mail
+from config import mail, pwd_context
 from secrets_use import MAIL_USERNAME
 
 
@@ -40,7 +40,7 @@ def is_admin(app, db, form, token_reset=None):
     if 'password' not in form:
         return None, False
     username, password = form['username'], form['password']
-    password = hashlib.sha512(password.encode()).hexdigest()
+    password = pwd_context.hash(password)
     if token_reset is None:
         kwargs = dict(name=username, password=password)
     else:
@@ -68,7 +68,7 @@ def is_admin(app, db, form, token_reset=None):
 
 
 def is_password_verified(db, password):
-    password = hashlib.sha512(password.encode()).hexdigest()
+    password = pwd_context.hash(password)
     kwargs = dict(name = current_user.name, password = password)
     req = db.session.query(Users).filter_by(**kwargs).first()
     return req is not None
@@ -85,7 +85,7 @@ def update_password(app, db, form):
     kwargs = dict(name=current_user.name)
     req = db.session.query(Users).filter_by(**kwargs).first()
     if req is not None:
-        req.password = hashlib.sha512(form['password'].encode()).hexdigest()
+        req.password = pwd_context.hash(password)
         db.session.commit()
         flash('Your password has been updated successfully.', 'success')
         return True
@@ -95,16 +95,23 @@ def update_password(app, db, form):
 
 
 def add_admin(app, db, form):
-    kwargs = {}
-    try:
-        for item in form.keys():
-            kwargs[item] = form[item]
-        user = Users(**kwargs)
-        db.session.add(user)
-        db.session.commit()
-        return True
-    except Exception as exception:
+    checks = [ (field in form.keys()) for field in ['name', 'email', 'password']]
+    if False in checks:
         return False
+    kwargs = {'name': form['name']}
+    user = db.session.query(Users).filter_by(**kwargs).first()
+    if user is not None:
+        return False
+    kwargs = {'email': form['email']}
+    user = db.session.query(Users).filter_by(**kwargs).first()
+    if user is not None:
+        return False
+    kwargs = {'name': form['name'], 'email': form['email'],
+              'password': pwd_context.hash(form['password'])}
+    user = Users(**kwargs)
+    db.session.add(user)
+    db.session.commit()
+    return True
 
 
 def get_user(field, form, db):
@@ -125,7 +132,7 @@ def send_email_reset_password(app, db, form):
     email = option.email
     new_password = ''.join(random.choice(string.ascii_letters) for i in range(25)) 
     token = ''.join(random.choice(string.ascii_letters) for i in range(25)) 
-    new_password_hash = hashlib.sha512(new_password.encode()).hexdigest()
+    new_password_hash = pwd_context.hash(new_password)
 
     option.token_reset = token
     option.password_reset = new_password_hash
