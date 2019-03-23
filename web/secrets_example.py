@@ -9,3 +9,11 @@ ip = '127.0.0.1'
 user = 'user@ldap.example.com'
 password = 'password'
 verify_ssl = False
+
+""" Flask Mail """
+MAIL_SERVER = 'smtp.gmail.com'   
+MAIL_PORT = 465                 
+MAIL_USERNAME = 'username@gmail.com'
+MAIL_PASSWORD = 'password'     
+MAIL_USE_TLS = True 
+MAIL_USE_SSL = False

@@ -3,10 +3,11 @@ from flask import flash, request, render_template
 from flask_login.utils import current_user
 from flask_mail import Message
 from urllib.parse import urlparse, urljoin
-import hashlib
+import hashlib, random, string
 
 from tables import Users
 from config import mail
+from secrets_use import MAIL_USERNAME
 
 
 def login_required(f):
@@ -38,16 +39,25 @@ def get_redirect_target():
             return target
 
 
-def is_admin(app, db, form):
+def is_admin(app, db, form, token_reset=None):
     if 'username' not in form:
         return None, False
     if 'password' not in form:
         return None, False
     username, password = form['username'], form['password']
     password = hashlib.sha512(password.encode()).hexdigest()
-    kwargs = dict(name=username, password=password)
-
+    if token_reset is None:
+        kwargs = dict(name=username, password=password)
+    else:
+        kwargs = dict(name=username, token_reset=token_reset,
+                      password_reset=password)
     req = db.session.query(Users).filter_by(**kwargs).first()
+    if token_reset is not None:
+        req.password = password
+        req.token_reset = ''
+        req.password_reset = ''
+        db.session.commit()
+        return req, True
     if req is not None:
         return req, True
 
@@ -110,14 +120,33 @@ def get_user(field, form, db):
         return None
 
 
-def send_email(app, db, form):
+def send_email_reset_password(app, db, form):
     fields = ['name', 'email']
     options = [ get_user(field, form, db) for field in fields ]
     if options == [None]*len(options):
         return False, None
     option = [ i for i in options if i != None ][0]
+
     email = option.email
-    msg = Message("Hello", sender="test@hackademint.org", recipients=[email])
+    new_password = ''.join(random.choice(string.ascii_letters) for i in range(25)) 
+    token = ''.join(random.choice(string.ascii_letters) for i in range(25)) 
+    new_password_hash = hashlib.sha512(new_password.encode()).hexdigest()
+
+    option.token_reset = token
+    option.password_reset = new_password_hash
+    db.session.commit()
+
+    url     = "https://cassiopee.hackademint.org"
+    subject = "Cassiopee HackademINT: Forgot Your Password?"
+    body    = ("Hello {0},\nYou asked for a password reset on {2}.\nIf you did "
+               "not asked for "
+               "it just ignore this message.\nIf you really want to reset it, you "
+               "can login at {2}/login/{3} with the following password: {1}\nThe "
+               "password will be updated with this new value only if you connect "
+               "to this link with your new password, otherwise, it does not "
+               "change your settings.\n\n---- Powered by Flask ----\n"
+               ".".format(option.name, new_password, url, token))
+    msg = Message(subject=subject, body=body, sender=MAIL_USERNAME, recipients=[email])
     mail.send(msg)
     return True, email
 

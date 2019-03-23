@@ -6,7 +6,7 @@ from flask_login.utils import current_user, login_user, logout_user
 from config import app, db
 from tables import Users
 from functions import login_required, is_admin, debug_print, is_safe_url, \
-get_redirect_target, update_password, add_admin, send_email, update_email
+get_redirect_target, update_password, add_admin, send_email_reset_password, update_email
 from proxmox_functions import proxmox_data, select_vm
 
 
@@ -73,11 +73,26 @@ def login():
         return redirect(url_for('index')) 
 
 
+@app.route('/login/<string:token>', methods = ['GET', 'POST']) 
+def login_reset(token): 
+    if request.method == 'GET':
+        return render_template('login.html')
+    user, verify = is_admin(app, db, request.form, token_reset=token)
+    if verify:
+        login_user(user) 
+        nextTarget = get_redirect_target() 
+        flash('You are logged in as an administrator', 'success')
+        return redirect(nextTarget or url_for('index'))
+    else:
+        flash('Authentication failure.', 'error')
+        return redirect(url_for('index')) 
+
+
 @app.route('/forgot', methods = ['GET', 'POST']) 
 def forgot(): 
     if request.method == 'GET':
         return render_template('forgot-password.html')
-    is_valid, email = send_email(app, db, request.form)
+    is_valid, email = send_email_reset_password(app, db, request.form)
     if is_valid:
         flash('An email has been sent to <u>{}</u>'.format(email), 'success')
     else:
