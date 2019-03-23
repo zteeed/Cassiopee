@@ -3,13 +3,13 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
-var ctx = document.getElementById("myProxmoxChartCPU");
+var ctx = document.getElementById("myProxmoxChartDisk");
 var myProxmoxChartCPU = new Chart(ctx, {
   type: 'doughnut',
   data: {
     labels: ["Used", "Available"],
     datasets: [{
-      data: [100*cpu_used, 100*cpu_available],
+      data: [disk_used, disk_available],
       backgroundColor: ['#D01616', '#1cc88a'],
       hoverBackgroundColor: ['#A20000', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",

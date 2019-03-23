@@ -1,29 +1,49 @@
 {% extends "base_dashboard.html" %}
 {% block tables %}
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">{{ vm.id.split('/')[0].upper() }} {{
-  vm.id.split('/')[1] }}: {{ vm.name }} | Node: {{ vm.node }}</h1>
 <p class="mb-4">
-JSON: {{ vm }}
-<ul>
-  <li>vmid: {{ vm.vmid }}</li>
-  <li>type: {{ vm.type }}</li>
-  <li>id: {{ vm.id }}</li>
-  <li>name: {{ vm.name }}</li>
-  <li>status: {{ vm.status }}</li>
-  <li>node: {{ vm.node }}</li>
-  <li>mem: {{ vm.mem }}</li>
-  <li>maxmem: {{ vm.maxmem }}</li>
-  <li>diskread: {{ vm.diskread }}</li>
-  <li>diskwrite: {{ vm.diskwrite }}</li>
-  <li>maxdisk: {{ vm.maxdisk }}</li>
-  <li>cpu: {{ vm.cpu }}</li>
-  <li>maxcpu: {{ vm.maxcpu }}</li>
-  <li>uptime: {{ vm.uptime }}</li>
-  <li>netin: {{ vm.netin }}</li>
-  <li>netout: {{ vm.netout }}</li>
-  <li>template: {{ vm.template }}</li>
-</ul>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ vm.type.upper() }} {{ vm.vmid }}: {{ vm.name }} | Node: {{ vm.node }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      JSON: {{ vm }}
+      <table style="margin-top: 15px !important" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>mem: {{ vm.mem }}</td>
+            <td>maxmem: {{ vm.maxmem }}</td>
+            <td>disk: {{ vm.disk }}</td>
+          </tr>
+          <tr>
+            <td>diskread: {{ vm.diskread }}</td>
+            <td>diskwrite: {{ vm.diskwrite }}</td>
+            <td>maxdisk: {{ vm.maxdisk }}</td>
+          </tr>
+          <tr>
+            <td>cpu: {{ vm.cpu }}</td>
+            <td>maxcpu: {{ vm.maxcpu }}</td>
+            <td>uptime: {{ vm.uptime }}</td>
+          </tr>
+          <tr>
+            <td>netin: {{ vm.netin }}</td>
+            <td>netout: {{ vm.netout }}</td>
+            <td>status: {{ vm.status }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </p>
 
 <!-- Content Row -->
@@ -34,15 +54,15 @@ JSON: {{ vm }}
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
       <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+	<h6 class="m-0 font-weight-bold text-primary">Disk Usage</h6>
       </div>
       <!-- Card Body -->
       <div class="card-body">
 	<div class="chart-pie pt-4">
-	  <canvas id="myPieChart"></canvas>
+	  <canvas id="myProxmoxChartDisk"></canvas>
 	</div>
 	<hr>
-	Styling for the donut chart can be found in the <code>/static/assets/js/proxmox/cpu.js</code> file.
+	Styling for the donut chart can be found in the <code>/static/assets/js/proxmox/chart-pie-disk.js</code> file.
       </div>
     </div>
   </div>
@@ -52,15 +72,15 @@ JSON: {{ vm }}
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
       <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+	<h6 class="m-0 font-weight-bold text-primary">RAM Usage</h6>
       </div>
       <!-- Card Body -->
       <div class="card-body">
 	<div class="chart-pie pt-4">
-	  <canvas id="myPieChart"></canvas>
+	  <canvas id="myProxmoxChartMem"></canvas>
 	</div>
 	<hr>
-	Styling for the donut chart can be found in the <code>/static/assets/js/proxmox/cpu.js</code> file.
+	Styling for the donut chart can be found in the <code>/static/assets/js/proxmox/chart-pie-mem.js</code> file.
       </div>
     </div>
   </div>
@@ -87,6 +107,9 @@ JSON: {{ vm }}
 <script>
 var cpu_used = {{ vm.cpu  }};
 var cpu_available = {{ vm.maxcpu }} - {{ vm.cpu  }};
+var mem_used = {{ vm.mem  }};
+var mem_available = {{ vm.maxmem }} - {{ vm.mem  }};
+var disk_used = {{ vm.disk  }};
+var disk_available = {{ vm.maxdisk }} - {{ vm.disk  }};
 </script>
-<script src="/static/assets/js/proxmox/chart-pie-cpu.js"></script>
 {% endblock %}
