@@ -31,7 +31,13 @@
           <tr>
             <td>netin: {{ vm.netin }}</td>
             <td>netout: {{ vm.netout }}</td>
-            <td>status: {{ vm.status }}</td>
+            {% if vm.status == 'running' %}
+              <td>status: <span style='color: green'><u>{{ vm.status }}</u></span></td>
+            {% elif vm.status == 'stopped' %}
+              <td>status: <span style='color: red'><u>{{ vm.status }}</u></span></td>
+            {% else %}
+              <td>status: <u>{{ vm.status }}</u></td>
+            {% endif %}
           </tr>
           <tr>
             <td></td>
@@ -47,6 +53,7 @@
 </p>
 
 <!-- Content Row -->
+{% if vm.status == 'running' %}
 <div class="row">
 
   <!-- Donut Chart -->
@@ -112,4 +119,5 @@ var mem_available = {{ vm.maxmem }} - {{ vm.mem  }};
 var disk_used = {{ vm.disk  }};
 var disk_available = {{ vm.maxdisk }} - {{ vm.disk  }};
 </script>
+{% endif %}
 {% endblock %}
