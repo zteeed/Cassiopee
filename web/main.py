@@ -3,6 +3,7 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login.utils import current_user, login_user, logout_user 
 from functools import wraps
+import hashlib
 
 from config.config import app, db
 from config.tables import Users
@@ -20,19 +21,27 @@ def login_required(f):
     return decorated_function
 
 
+def inject():
+    logo = 'https://secure.gravatar.com/avatar/{}' 
+    logo = logo.format(hashlib.md5(current_user.email.encode()).hexdigest())
+    return {'name': current_user.name,
+            'email': current_user.email,
+            'logo': logo}
+
+
 @app.route('/')
 @login_required
 def index():
     fields = ['id', 'name', 'status', 'node']
     return render_template('index.html', fields = fields, vms = proxmox_data(),
-                           username = current_user.name)
+                           obj = inject())
 
 
 @app.route('/<string:node>/<string:type>/<int:id>')
 @login_required
 def show_vm(node, type, id):
     vm = select_vm(node, type, id)
-    return render_template('show_vm.html', vm=vm)
+    return render_template('show_vm.html', vm=vm, obj=inject())
 
 
 
@@ -40,24 +49,22 @@ def show_vm(node, type, id):
 @login_required
 def settings_add_admin():
     if request.method == 'GET':
-        return render_template('settings_add_admin.html')
+        return render_template('settings_add_admin.html', obj=inject())
     is_valid = add_admin(app, db, request.form)
     if is_valid:
         flash('{} is now an administrator.'.format(request.form['name']), 'success')
     else:
         flash('An error occurred while creating a new administrator. The email '
               'or username might be already used.', 'error')
-    return render_template('settings_add_admin.html')
+    return render_template('settings_add_admin.html', obj=inject())
 
 
 @app.route('/settings/update_admin', methods = ['GET', 'POST'])
 @login_required
 def settings_update_admin():
-    kwargs = {'name': current_user.name}
-    user = db.session.query(Users).filter_by(**kwargs).first()
     if request.method == 'POST':
         result = update_email(app, db, request.form)
-    return render_template('settings_update_admin.html', email = user.email)
+    return render_template('settings_update_admin.html', obj=inject())
 
 
 @app.route('/settings/reset_admin', methods = ['GET', 'POST'])
@@ -65,7 +72,7 @@ def settings_update_admin():
 def settings_reset_admin():
     if request.method == 'POST':
         result = update_password(app, db, request.form)
-    return render_template('settings_reset_admin.html')
+    return render_template('settings_reset_admin.html', obj=inject())
 
 
 @app.route('/login', methods = ['GET', 'POST']) 
