@@ -8,405 +8,65 @@
 
 \begin{center}
 
-\includegraphics[width=0.3\textwidth]{images/logo.png} \\ \vspace{0.4cm}
+\includegraphics[width=0.40\textwidth]{images/logo.png}  \includegraphics[width=0.39\textwidth]{images/hackademint.png} \\ \vspace{2.5cm}
+
 {\huge \textsc{Cassiopée Project 2018-2019: Development and deployment of an automated IT security audit tool in a virtualized environment.}} \\
   \textit{Aurélien Duboc, Pierrick Gorisse, Lucas Martin \\ Supervisor: Hervé Debar}
 
 \end{center}
 
+\vspace{2cm}
+\begin{center}
+\includegraphics[width=0.40\textwidth]{images/cassiopee.jpg}
+\end{center}
+
+\pagebreak
+
 \noindent\rule{\textwidth}{.1pt}%
 \tableofcontents
 \noindent\rule{\textwidth}{.1pt}%
+
+\pagebreak
 
 % \section{Cassiopée Project: Development and deployment of an automated IT security audit tool in a
 % virtualized environment.}
 \section{Start of the project}
 
-\vspace{1cm}
 
-Large companies as well as SMEs are subject to a security obligation
-for their information systems. The idea is to propose a tool that allows the
+Large companies, as well as SMEs are subject to a security obligation
+for their information systems. This project proposes a tool that allows the
 management of the main vulnerabilities that security auditers usually look for.
-This tool will identify several weaknesses and / or configuration vulnerabilities.
+This tool is identify weaknesses and / or configuration vulnerabilities.
 \\
 The main interest lies in the automated analysis of a large number of machines. 
 It could also propose automated corrections associated with these weaknesses. 
-One could imagine that a tool like this one, to which other features would be 
-added, could be a security audit equivalency for companies 
-if this tool is accredited.
-\pagebreak
-
-%% List of tools, useless according to Hervé Debar
-
-%\subsection{Technical ressources}
-%
-%\begin{tabularx}{\textwidth}{bs}
-%  \hline
-%    \begin{flushleft}
-%    (1): Proxmox VE is a complete open-source platform for enterprise
-%    virtualization. With the built-in web interface you can easily manage
-%    VMs and containers, software-defined storage and networking,
-%    high-availability clustering, and multiple out-of-the-box tools on a
-%    single solution.\\ *\url{https://www.proxmox.com/en/}
-%    \end{flushleft}
-%    & 
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/proxmox-logo.png}
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (2): The Lightweight Directory Access Protocol is an open,
-%    vendor-neutral, industry standard application protocol for accessing
-%    and maintaining distributed directory information services over an
-%    Internet Protocol
-%    network.\\ *\url{https://ldap.com/basic-ldap-concepts/}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/ldap-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (3): A virtual private network extends a private network across a
-%    public network, and enables users to send and receive data across
-%    shared or public networks as if their computing devices were directly
-%    connected to the private network.\\ *
-%    \url{https://openvpn.net/faq/what-is-openvpn/}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/openvpn-logo.png}  
-%      \end{center} \\
-%  \hline
-%\end{tabularx}
-%
-%\pagebreak
-%
-%\begin{tabularx}{\textwidth}{bs}
-%  \hline
-%    \vspace{2cm}
-%    (4): BIND is an open source software that enables you to publish your
-%    Domain Name System (DNS) information on the Internet, and to resolve
-%    DNS queries for your users.\\ *
-%    \url{(https://www.isc.org/downloads/bind/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/bind-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (5): Proxying is typically used to distribute the load among several
-%    servers, seamlessly show content from different websites, or pass
-%    requests for processing to application servers over protocols other
-%    than HTTP.\\ *
-%    \url{(https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/nginx-apache-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (6): Zabbix is a mature and effortless enterprise-class open source
-%    monitoring solution for network monitoring and application monitoring
-%    of millions of metrics.\\ *
-%    \url{(https://www.zabbix.com/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/zabbix-logo.png}  
-%      \end{center} \\
-%  \hline
-%\end{tabularx}
-%
-%\pagebreak
-%
-%\begin{tabularx}{\textwidth}{bs}
-%  \hline
-%    \vspace{2cm}
-%    (7): The File Transfer Protocol is a standard network protocol used
-%    for the tansfer of computer files between a client and server on a
-%    computer network.\\ *\url{http://proftpd.org/}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/proftpd-logo.png}  
-%      \end{center} \\
-%    \hline
-%    \vspace{2cm}
-%    (8): Lynis is an extensible security audit tool for computer systems
-%    running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other
-%    Unix-derivatives.\\ *
-%    \url{(https://cisofy.com/lynis/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/lynis-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (9): LaTeX is a markup level text editing tool that separates the word 
-%    formatting from the content entry task. 
-%    These tools allow users to define formatting of text before hand through 
-%    markup-level instructions and once the content is inserted, the document 
-%    is ready to be exported as a PDF or any other file format.\\ *\url{(https://www.latex-project.org/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/latex-logo.png}  
-%      \end{center} \\
-%  \hline
-%\end{tabularx}
-%
-%\pagebreak
-%
-%\begin{tabularx}{\textwidth}{bs}
-%  \hline
-%    \vspace{2cm}
-%    (10): LXC is an operating-system-level virtualization method for
-%    running multiple isolated Linux systems on a control host using a
-%    single Linux kernel.\\ *
-%    \url{(https://linuxcontainers.org/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/lxc-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{4cm}
-%    (11): KVM (Kernel Virtual Machine) is a Linux kernel module that
-%    allows a user space program to utilize the hardware virtualization
-%    features of various processors. Today, it supports recent Intel and
-%    AMD processors (x86 and x86\_64), PPC 440, PPC 970, S/390, ARM (Cortex
-%    A15, AArch64), and MIPS32 processors. QEMU can make use of KVM when
-%    running a target architecture that is the same as the host
-%    architecture. For instance, when running qemu-system-x86 on an x86
-%    compatible processor, you can take advantage of the KVM acceleration -
-%    giving you benefit for your host and your guest system. The KVM
-%    project used to maintain a fork of QEMU called qemu-kvm. All feature
-%    differences have been merged into QEMU upstream and the development of
-%    the fork suspended.\\ *
-%    \url{(https://www.qemu.org/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/qemu-logo.png}  
-%      \includegraphics[width=0.3\textwidth]{images/kvm-logo.png}  
-%      \end{center} \\
-%  \hline
-%\end{tabularx}
-%
-%\pagebreak
-%
-%\begin{tabularx}{\textwidth}{bs}
-%  \hline
-%    \vspace{2cm}
-%    (12): Ansible is an open source software that automates software
-%    provisioning, configuration management, and application deployment.
-%    Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
-%    \url{(https://www.ansible.com/)}\\
-%    &
-%      \begin{center}
-%      \includegraphics[width=0.1\textwidth]{images/ansible-logo.png}  
-%      \end{center} \\
-%  \hline
-%    \vspace{2cm}
-%    (13): ELK is the acronym for three open source projects:
-%    Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and
-%    analytics engine. Logstash is a server‑side data processing pipeline
-%    that ingests data from multiple sources simultaneously, transforms it,
-%    and then sends it to a stash like Elasticsearch. Kibana lets
-%    users visualize data with charts and graphs in Elasticsearch. The
-%    Elastic Stack is the next evolution of the ELK Stack.\\ *
-%    \url{(https://www.elastic.co/fr/elk-stack)}\\
-%    & 
-%      \begin{center}
-%      \includegraphics[width=0.3\textwidth]{images/elk-logo.png}  
-%      \end{center} \\
-%  \hline
-%\end{tabularx}
-%
-%\pagebreak
-
-\subsection{Objectives}
-\begin{itemize}
-\vspace{0.5cm}
-\item
-  The establishment of an active infrastructure resulting from the use of
-  various network services (hypervisor, access control, vpn, dns, reverse
-    proxy, monitoring servers...) as well as the use of personal services and data:
-  some users of this infrastructure host their web and ftp servers.
-
-\item
-  The deployment of security audit tools for computer systems
-  running Linux at least.
-
-\item
-  The management of the logs associated with these audits.
-
-\item
-  The development of a web interface allowing data management and visibility processed
-  by the log management tool.
-\item
-  The documentation in English for the deliverables and for Github in order to
-    get an easier integration by the open source community.
-\end{itemize}
-
-\pagebreak
-
-\subsection{Requirements}
-\begin{itemize}
-\vspace{0.5cm}
-
-\item
-  Setting up a hypervisor for managing virtualized content: \\
-
-  The chosen solution is Proxmox, an open source hypervisor that can provide container based virtual by way of open VZ.
-  It supports guest operating system like Linux (KVM), Windows. It is enabled by the presence of integrated backup service.
-  It delivers full system virtualization by the use of KVM.
-  The Proxmox management interface can function using a normal browser.
-  Proxmox is using the cluster mode, from a single page multiple servers can be managed.
-  and can perform a direct migration between one host to the other.
-  Lastly, Proxmox provides shell access to the KVM directly from its interface, using a Debian system. 
-
-  Proxmox VE tightly integrates KVM hypervisor and LXC
-  containers, software-defined storage and networking functionality on a
-  single platform, and easily manages high availability clusters and
-  disaster recovery tools with the built-in web management interface.
-
-  You may sometimes encounter the term KVM (Kernel-based Virtual Machine).
-  It means that Qemu is running with the support of the virtualization
-  processor extensions, via the Linux KVM module. In the context of
-  Proxmox VE Qemu and KVM can be used interchangeably as Qemu in Proxmox
-  VE will always try to load the KVM module.
-  \\ 
-  *\url{https://www.proxmox.com/en/}
-
-  \begin{center}
-
-  \includegraphics[width=0.6\textwidth]{images/proxmox-stack-example.jpg}
-
-  \end{center}
-
-  \pagebreak
-
-\item
-  Setting up a directory to manage users and associated access control policies:
-    \\
-
-  We are going to use an LDAP directory as specified in RFC 4510 and following.
-  This allows a standardized representation of information (database - LDAP directory) as well as a standard query protocol widely deployed for this database.
-  The chosen solution is the OpenLDAP software version 2.4.46, because of its
-    maturity and protocol compliance. phpLDAPadmin is the web interface that
-    allows the management of user accounts. one of the most important fields is
-    sshPublicKey because all the servers are configured to do LDAP queries
-    during an SSH connection to list the authorized RSA keys.
-    We could have use a PAM setup with libpam-ldap but it seemed easier to specify
-    in ssh configuration files an AuthorizedKeyCommand that will reach all the
-    RSA public keys on the LDAP server.
-  \\ 
-  *\url{https://ldap.com/basic-ldap-concepts/}
-
-  \begin{center}
-
-  \includegraphics[width=0.75\textwidth]{images/ldap-example.jpg}
-
-  \end{center}
-
-\item
-  Use of a tool allowing access to all virtualized machines while using the
-    access control protocol cited above: \\
-
-  We are going to use Ansible, an open source software that automates software
-  provisioning, configuration management, and application deployment.
-  Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
-  \url{(https://www.ansible.com/)}
-
-  \begin{center}
-
-  \includegraphics[width=0.75\textwidth]{images/ansible-example.jpg}
-
-  \end{center}
-
-\pagebreak
-
-\item
-  Implementation of a list of tools allowing the automated audits added to our
-  personal contributions: \\
-
-  For now, Lynis seems to be the best candidate. We will probably combine several tools later.
-  Lynis is an extensible security audit tool for computer systems
-  running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other
-  Unix-derivatives.\\ 
-  Lynis scanning is opportunistic, meaning it will only use what it can find, like available tools or libraries. The benefit is that no installation of other tools is needed, so you can keep your systems clean.
-By using this scanning method, the tool can run with almost no dependencies. Also, the more it finds, the more extensive the audit will be. In other words: Lynis will always perform scans that are customized to your system and two audits will never be the same!
-  \\  * \url{(https://cisofy.com/lynis/)}
-
-  \begin{center}
-
-  \includegraphics[width=0.95\textwidth]{images/lynis-example.png}
-
-  \end{center}
-
-\pagebreak
-
-\item
-  Management of the logs: \\
-
-  ELK is the most famous tool for log processing and analysis, so naturally we will use this tool to generate our logs.
-  ELK is the acronym for three open source projects:
-  Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and
-  analytics engine. Logstash is a server‑side data processing pipeline
-  that ingests data from multiple sources simultaneously, transforms it,
-  and then sends it to a stash like Elasticsearch. Kibana lets
-  users visualize data with charts and graphs in Elasticsearch. The
-  Elastic Stack is the next evolution of the ELK Stack.\\ *
-  \url{(https://www.elastic.co/fr/elk-stack)}\\
-  \begin{center}
-
-  \includegraphics[width=0.75\textwidth]{images/elk-example.jpg}
-
-  \end{center}
-
-\item 
-  Web interface development: \\
-
-  The use of a framework associated with a certain number of libraries will
-  allow us to obtain a modular and easy to use application.
-  Symfony is a PHP framework that we used to manipulate, which is why we chose 
-  to use this one. Moreover, we were able to verify that there were many 
-  libraries usable by this framework allowing us to interface ELK with our web
-  application. \\ *
-  \url{(https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/)}\\
-
-  \begin{center}
-
-  \includegraphics[width=0.65\textwidth]{images/symfony-example.jpg}
-
-  \end{center}
-
-
-\end{itemize}
-\pagebreak
-
-\subsection{Expected results}
-\begin{itemize}
-\item
-  A live demonstration is an option, otherwise, we will record a video 
-  of our tool performing an automated audit simulation.
-\item
-  The presentation of the audit log management and administration platform
-  generated by the tool
-\item
-  To provide a free and open source tool with clear and
-  explicit documentation allowing the redeployment of this tool in a virtualized
-    environment.
-\end{itemize}
-
-We are still looking for other features.
+A tool like this one could be a security audit equivalent for companies.
 
 \vspace{1cm}
+\subsection{Objectives}
+\vspace{0.5cm}
 
-\subsection{Project Expectations}
-The use of English for our project is primodial. Indeed, all the technical
-documentation associated with the resources used is in English and we are used
-to working with resources in English because they are much more complete. In
-addition, the community providing these resources exchanges mainly in English. In order
-to offer a tool that is widespread and easy to use, writing the
-documentation in English then appears as a better choice. \\
-Group size: 3 to 4 students.
+\subsubsection{Infrastructure}
 
+In order to provide a realistic framework for the implementation of such a tool, it is necessary to establish an active infrastructure resulting from the use of network services such as Virtual Private Networks (VPN), Domain Name Servers (DNS), reverse proxy, monitoring servers... It is also resulting from the use of personal services and data: some users of this infrastructure host their web and ftp servers.
+
+\vspace{0.5cm}
+\subsubsection{Setting up a security scan tools}
+
+The deployment of security audit tools for computer systems running Linux at least.
+
+\vspace{0.5cm}
+\subsubsection{Management of the logs}
+The management of the logs associated with these audits, helps detect evidence of an attack in the logs of network devices, servers, and applications. The web interface aggregates and manages log data from built-in detection capabilities and from logs produced by other devices in your environment. It automatically execute advanced analysis, producing normalized events and correlating them to produce actionable intelligence, alerting us to any threats facing your environment.
+
+
+\vspace{0.5cm}
+\subsubsection{Web interface}
+The development of a web interface allowing data management and visibility processed
+by the log management tool.
+
+
+\vspace{0.5cm}
 \subsubsection{Specific competencies (in addition to PRO4501):}
 UNIX-like platforms (Linux, MacOS) and associated tools, including
 software development tools (editors, interpretors, etc.). We are working on a
@@ -418,21 +78,178 @@ frameworks for JavaScript development (e.g.~Node.js, Angular.js, etc.)
 As Elasticsearch and Kibana are working as APIs, the frontend development part should work
 as a REST API too.
 
+
+\vspace{0.5cm}
 \subsubsection{Learning objectives}
 Processing of accessible textual data (coherence management, etc.)
 , the presentation and analysis of textual data as well as the understanding of cybersecurity
 software and integration. \\
 Contact: \url{herve.debar@telecom-sudparis.eu} 
 
-%
-%% useless according to Hervé Debar
-%
-%\titlebox{INFORMATION}{Issues related to the project should be addressed exclusively by email.
-%It is desirable that interested students contact the project owner. If
-%needed, interactions before end of January should occur through
-%visio-conference. Project evaluation will be partially linked to the
-%achievement of objectives
-%}
+
+\vspace{0.5cm}
+\subsubsection{Documentation}
+The use of English for our project is primodial. Indeed, all the technical
+documentation associated with the resources used is in English and we are used
+to working with resources in English because they are much more complete. In
+addition, the community providing these resources exchanges mainly in English. In order
+to offer a tool that is widespread and easy to use, writing the
+documentation in English then appears as a better choice. \\
+Group size: 3 to 4 students.
+
+
+\pagebreak
+
+\subsection{Technical solutions}
+
+\vspace{1cm}
+\subsubsection{Setting up a hypervisor for managing virtualized content}
+
+The chosen solution is Proxmox, an open source hypervisor that can provide container based virtual by way of open VZ.
+It supports guest operating system like Linux (KVM), Windows. It is enabled by the presence of integrated backup service.
+It delivers full system virtualization by the use of KVM.
+The Proxmox management interface can function using a normal browser.
+Proxmox is using the cluster mode, from a single page multiple servers can be managed.
+and can perform a direct migration between one host to the other.
+Lastly, Proxmox provides shell access to the KVM directly from its interface, using a Debian system. 
+
+\begin{center}
+
+\includegraphics[width=0.6\textwidth]{images/proxmox-stack-example.jpg}
+\\
+\underline{Proxmox stack architecture}
+
+\end{center}
+
+\vspace{1cm}
+Proxmox VE tightly integrates KVM hypervisor and LXC
+containers, software-defined storage and networking functionality on a
+single platform, and easily manages high availability clusters and
+disaster recovery tools with the built-in web management interface.
+
+\vspace{0.5cm}
+You may sometimes encounter the term KVM (Kernel-based Virtual Machine).
+It means that Qemu is running with the support of the virtualization
+processor extensions, via the Linux KVM module. In the context of
+Proxmox VE Qemu and KVM can be used interchangeably as Qemu in Proxmox
+VE will always try to load the KVM module.
+
+\\
+\vspace{1cm}
+
+*\url{https://www.proxmox.com/en/}
+
+\pagebreak
+
+\subsubsection{Setting up a directory to manage users and associated access control policies}
+
+\vspace{0.4cm}
+
+We use an LDAP directory [RFC 4510].
+This allows a standardized representation of information (database - LDAP directory) as well as a standard query protocol widely deployed for this database.
+The chosen solution is the OpenLDAP software version 2.4.46, because of its
+maturity and protocol compliance. phpLDAPadmin is the web interface that
+allows the management of user accounts. one of the most important fields is
+sshPublicKey because all the servers are configured to do LDAP queries
+during an SSH connection to list the authorized RSA keys.
+\\ We could have use a PAM setup with libpam-ldap but it seemed easier to specify
+in ssh configuration files an AuthorizedKeyCommand that will reach all the
+RSA public keys on the LDAP server.
+\\ 
+*\url{https://ldap.com/basic-ldap-concepts/}
+
+\begin{center}
+
+\includegraphics[width=0.75\textwidth]{images/ldap-example.jpg}
+
+\end{center}
+
+\vspace{-1.3cm}
+\subsubsection{Use of a tool allowing access to all virtualized machines while using the access control protocol cited above}
+\vspace{0.5cm}
+
+We select Ansible, an open source software that automates software
+provisioning, configuration management, and application deployment.
+Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
+\url{(https://www.ansible.com/)}
+
+\begin{center}
+
+\includegraphics[width=0.75\textwidth]{images/ansible-example.jpg}
+\\
+\underline{Ansible playbooks deployment}
+
+\end{center}
+
+\pagebreak
+
+\subsubsection{Implementation of a list of tools allowing the automated audits added to our
+  personal contribution}
+
+\vspace{0.3cm}
+For now, Lynis is the best candidate. We will probably combine several tools later.
+Lynis is an extensible security audit tool for computer systems
+running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other
+Unix-derivatives.
+\\ 
+
+Lynis scanning is opportunistic, meaning it will only use what it can find, like available tools or libraries. The benefit is that no installation of other tools is needed, so you can keep your systems clean.
+By using this scanning method, the tool can run with almost no dependencies. Also, the more it finds, the more extensive the audit will be. In other words: Lynis will always perform scans that are customized to your system and two audits will never be the same.
+\\
+
+Many vulnerability scanners perform on a network level (outside). They can detect missing security patches due to discovered weaknesses. Still, in many cases leaks can be present while detection via the network is close to impossible. An additional downside is version banners on which some of the tools rely, providing you with a false positive when the software vendor is using a patched version. 
+\\
+
+Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc.
+\\
+
+Depending on your needs and how in-depth a security scan has to be, scanning from the inside might be a preferred method. More information will be available, while the chance of getting false positives is lower as well.
+
+%\vspace{0.2cm}
+%* \url{(https://cisofy.com/lynis/)}
+\begin{center}
+\includegraphics[width=0.95\textwidth]{images/lynis-example.png}
+\\
+\underline{Output from Lynis scan}
+\end{center}
+
+\pagebreak
+
+\subsubsection{Management of the logs}
+
+ELK is the most famous tool for log processing and analysis, so naturally we will use this tool to generate our logs.
+ELK is the acronym for three open source projects:
+Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and
+analytics engine. Logstash is a server‑side data processing pipeline
+that ingests data from multiple sources simultaneously, transforms it,
+and then sends it to a stash like Elasticsearch. Kibana lets
+users visualize data with charts and graphs in Elasticsearch. The
+Elastic Stack is the next evolution of the ELK Stack.\\ *
+\url{(https://www.elastic.co/fr/elk-stack)}\\
+\begin{center}
+
+\includegraphics[width=0.75\textwidth]{images/elk-example.jpg}
+
+\end{center}
+
+\subsubsection{Web interface development}
+
+The use of a framework associated with a certain number of libraries will
+allow us to obtain a modular and easy to use application.
+Symfony is a PHP framework that we used to manipulate, which is why we chose 
+to use this one. Moreover, we were able to verify that there were many 
+libraries usable by this framework allowing us to interface ELK with our web
+application. \\ *
+\url{(https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/)}\\
+
+\begin{center}
+
+\includegraphics[width=0.65\textwidth]{images/symfony-example.jpg}
+\\
+\underline{First web application architecture}
+
+\end{center}
+
 
 \pagebreak
 
@@ -451,6 +268,11 @@ Like Proxmoxia it dynamically creates attributes which responds to the attribute
 \\
 
 \lstinputlisting[language=Python]{scripts/proxmoxer.py}
+\begin{center}
+
+\underline{Snippet to get LXC and Qemu data over Proxmox API}
+
+\end{center}
 
 \subsection{Network Architecture}
 
@@ -458,17 +280,54 @@ Like Proxmoxia it dynamically creates attributes which responds to the attribute
 
 \begin{center}
 \includegraphics[width=0.95\textwidth]{images/reseau.png}
+\\
+\underline{Schema of the network architecture}
 \end{center}
+
+\pagebreak
+
+Several physical servers (whose names are "Cody-Maverick", "L'OVNI" and "Shawan") have been clustered on which are deployed the Proxmox hypervisor. These are DELL PowerEdge 1950 servers.
+
+\\
+
+To connect to different machines in the infrastructure, the application
+knows the IP addresses of the different machines thanks to the API of
+the hypervisor and RSA private keys must be filled in by the administrator
+system within the application to allow connection to
+different machines.
+
+\vspace{1cm}
+\subsubsection{Technical specs of the servers}
+
+The dual processor Dell PowerEdge 1950 delivers next generation performance in a 1U, rack dense chassis with Quad-Core Intel Xeon processors. This high concentration of computing power and redundancy makes the PowerEdge 1950 the perfect choice for high performance computing clusters (HPCC), SAN front-end, web and infrastructure applications, especially where data center real estate is at a premium. Outstanding manageability in this latest generation 1U server delivers new functionality for managing the servers from remote locations.
+
+\vspace{1cm}
+\subsubsection{Virtual LANs}
+
+A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2). LAN is the abbreviation for local area network and in this context virtual refers to a physical object recreated and altered by additional logic. VLANs work by applying tags to network frames and handling these tags in networking systems – creating the appearance and functionality of network traffic that is physically on a single network but acts as if it is split between separate networks. In this way, VLANs can keep network applications separate despite being connected to the same physical network, and without requiring multiple sets of cabling and networking devices to be deployed.
+
+\\
+\vspace{1cm}
+The three clustered servers are separated by three routers and we do not have access to one of them, so we have established a network infrastructure in which we have installed VLANs while the subnets are schemas-filled. In order to realize the cluster between the servers, we set up an Ethernet layer 2 bridge (see next subsection).
+
+\vspace{1cm}
+\subsubsection{Layer 2 ethernet bridging}
+
+Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as, "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network. 
 
 \pagebreak
 
 \subsection{Application Architecture}
 
 Here is the detail of the architecture as currently designed for this project:
+\vspace{1cm}
+\begin{center}
+\includegraphics[width=0.90\textwidth]{images/schema.png}
+\\
+\underline{Application architecture schema}
+\end{center}
+
 \begin{itemize}
-\item
-  Several physical servers (whose names are "Cody-Maverick", "L'OVNI" and
-  "Shawan") have been clustered on which are deployed the Proxmox hypervisor.
 \item
   Flask application dialog with this hypervisor through its API, we
   so use proxmoxer as a wrapper to interface with
@@ -477,12 +336,6 @@ Here is the detail of the architecture as currently designed for this project:
   It is possible to access containers and virtual machines through
   pct (Tool to manage Linux Container (LXC) on Proxmox VE) and
   qmu (Qemu / KVM Virtual Machine Manager).
-\item
-  To connect to different machines in the infrastructure, the application
-  knows the IP addresses of the different machines thanks to the API of
-  the hypervisor and RSA private keys must be filled in by the administrator
-  system within the application to allow connection to
-  different machines.
 \item
   By using the SSH network protocol, the Ansible tool helps with the execution of
   Lynis security audit tool on the different in order to get a
@@ -495,33 +348,84 @@ Here is the detail of the architecture as currently designed for this project:
 \end{itemize}
 
 
-\vspace{1cm}
-\begin{center}
-\includegraphics[width=0.90\textwidth]{images/schema.png}
-\end{center}
-
 \pagebreak
 
 \subsection{Scoring and standardization}
 
-The Common Vulnerability Scoring System (CVSS) is a free and open industry standard for assessing the severity of computer system security vulnerabilities. CVSS attempts to assign severity scores to vulnerabilities, allowing responders to prioritize responses and resources according to threat. Scores are calculated based on a formula that depends on several metrics that approximate ease of exploit and the impact of exploit. Scores range from 0 to 10, with 10 being the most severe. While many utilize only the CVSS Base score for determining severity, temporal and environmental scores also exist, to factor in availability of mitigations and how widespread vulnerable systems are within an organization, respectively.
+\vspace{1cm}
 \\ 
 With Lynis, many tests are part of common security guidelines and standards,
 with on top additional security tests. After the scan a report will be displayed
 with all discovered findings. Our application will map these vulnerabilities with a CVSS Base, Temporal and Enrironmental Score 
 
-\vspace{1cm}
+\vspace{0.2cm}
 \begin{center}
 \includegraphics[width=0.98\textwidth]{images/cvss.png}
+\\
+\underline{Common Vulnerability Scoring System Version 3.0 Calculator}
 \end{center}
+
+\vspace{1cm}
+
+\\
+The Common Vulnerability Scoring System (CVSS) is a free and open industry standard for assessing the severity of computer system security vulnerabilities. CVSS attempts to assign severity scores to vulnerabilities, allowing responders to prioritize responses and resources according to threat. Scores are calculated based on a formula that depends on several metrics that approximate ease of exploit and the impact of exploit. Scores range from 0 to 10, with 10 being the most severe. While many utilize only the CVSS Base score for determining severity, temporal and environmental scores also exist, to factor in availability of mitigations and how widespread vulnerable systems are within an organization, respectively.
+
+\\
+\vspace{0.2cm}
+\url{https://www.first.org/cvss/calculator/3.0}
+
 \pagebreak
 
-\subsection{Results}
+\section{Results}
 
+\subsection{Login View}
+url: \url{https://cassiopee.hackademint.org/login}
+\\
+\begin{center}
+\includegraphics[width=0.98\textwidth]{images/flask-application-01.png}
+\\
+\underline{Screenshot of Login View}
+\end{center}
+
+\subsection{Forgot View}
+url: \url{https://cassiopee.hackademint.org/forgot}
+\\
+\begin{center}
+\includegraphics[width=0.98\textwidth]{images/flask-application-02.png}
+\\
+\underline{Screenshot of Forgot View}
+\end{center}
+
+\pagebreak
+
+\begin{center}
+\includegraphics[width=0.98\textwidth]{images/flask-application-021.png}
+\\
+\underline{Screenshot of Email sent by Forgot View}
+\end{center}
+
+
+\subsection{Admin Panel}
+url: \url{https://cassiopee.hackademint.org/admin/users/}
+\\
+\begin{center}
+\includegraphics[width=0.98\textwidth]{images/flask-application-0.png}
+\\
+\underline{Screenshot of Admin Panel}
+\end{center}
+
+This admin panel allows to manage the administrators of the platform
+
+
+\subsection{Index View}
 \vspace{1cm}
 \begin{center}
 \includegraphics[width=0.98\textwidth]{images/flask-application-1.png}
 \end{center}
+
+\pagebreak 
+
+\subsection{CT/VM view}
 \vspace{1cm}
 \begin{center}
 \includegraphics[width=0.98\textwidth]{images/flask-application-2.png}
@@ -530,5 +434,9 @@ with all discovered findings. Our application will map these vulnerabilities wit
 \begin{center}
 \includegraphics[width=0.98\textwidth]{images/flask-application-3.png}
 \end{center}
+
+\pagebreak 
+
+\section{Conclusion and perspectives}
 
 \end{document}
