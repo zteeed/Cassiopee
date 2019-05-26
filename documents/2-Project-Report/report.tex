@@ -34,13 +34,13 @@
 
 
 Large companies, as well as SMEs are subject to a security obligation
-for their information systems. This project proposes a tool that allows the
+for their information systems. Our project proposes a tool that allows the
 management of the main vulnerabilities that security auditers usually look for.
-This tool is identify weaknesses and / or configuration vulnerabilities.
+This tool identifies weaknesses and / or configuration vulnerabilities.
 \\
-The main interest lies in the automated analysis of a large number of machines. 
-It could also propose automated corrections associated with these weaknesses. 
-A tool like this one could be a security audit equivalent for companies.
+The main interest lies in the automated analysis of a large number of machines.
+It could also propose automated corrections associated with these weaknesses.
+Our solution could be equivalent to a security audit for a company.
 
 \vspace{1cm}
 \subsection{Objectives}
@@ -48,7 +48,7 @@ A tool like this one could be a security audit equivalent for companies.
 
 \subsubsection{Infrastructure}
 
-In order to provide a realistic framework for the implementation of such a tool, it is necessary to establish an active infrastructure resulting from the use of network services such as Virtual Private Networks (VPN), Domain Name Servers (DNS), reverse proxy, monitoring servers... It is also resulting from the use of personal services and data: some users of this infrastructure host their web and ftp servers.
+In order to provide a realistic framework for the implementation of such a tool, it is necessary to establish an active infrastructure resulting from the use of network services such as Virtual Private Networks (VPN), Domain Name Servers (DNS), reverse proxy, monitoring servers... It is also resulting from the use of personal services and data, as some users of this infrastructure host web and ftp servers on it.
 
 \vspace{0.5cm}
 \subsubsection{Setting up a security scan tools}
@@ -57,12 +57,12 @@ The deployment of security audit tools for computer systems running Linux at lea
 
 \vspace{0.5cm}
 \subsubsection{Management of the logs}
-The management of the logs associated with these audits, helps detect evidence of an attack in the logs of network devices, servers, and applications. The web interface aggregates and manages log data from built-in detection capabilities and from logs produced by other devices in your environment. It automatically execute advanced analysis, producing normalized events and correlating them to produce actionable intelligence, alerting us to any threats facing your environment.
+The management of the logs associated with these audits, helps detect evidence of an attack in the logs of network devices, servers, and applications. The web interface aggregates and manages log data from built-in detection capabilities and from logs produced by other devices in your environment. It automatically executes advanced analysis, producing normalized events and correlating them to produce actionable intelligence, alerting us of any threats to the environment.
 
 
 \vspace{0.5cm}
 \subsubsection{Web interface}
-The development of a web interface allowing data management and visibility processed
+The development of a web interface allowing data management and visibility over the data produced
 by the log management tool.
 
 
@@ -71,9 +71,9 @@ by the log management tool.
 UNIX-like platforms (Linux, MacOS) and associated tools, including
 software development tools (editors, interpretors, etc.). We are working on a
 server without a graphical environment so a text editor like VIM should be
-optimized as an IDE with some plugins in order to increase our efficiency on the 
-server side, on the development and deployment of the tool. 
-Coding in JavaScript and / or scripting languages, including referenced 
+optimized as an IDE with some plugins in order to increase our efficiency on the
+server side, on the development and deployment of the tool.
+Coding in JavaScript and / or scripting languages, including referenced
 frameworks for JavaScript development (e.g.~Node.js, Angular.js, etc.)
 As Elasticsearch and Kibana are working as APIs, the frontend development part should work
 as a REST API too.
@@ -84,7 +84,7 @@ as a REST API too.
 Processing of accessible textual data (coherence management, etc.)
 , the presentation and analysis of textual data as well as the understanding of cybersecurity
 software and integration. \\
-Contact: \url{herve.debar@telecom-sudparis.eu} 
+
 
 
 \vspace{0.5cm}
@@ -95,7 +95,6 @@ to working with resources in English because they are much more complete. In
 addition, the community providing these resources exchanges mainly in English. In order
 to offer a tool that is widespread and easy to use, writing the
 documentation in English then appears as a better choice. \\
-Group size: 3 to 4 students.
 
 
 \pagebreak
@@ -105,13 +104,13 @@ Group size: 3 to 4 students.
 \vspace{1cm}
 \subsubsection{Setting up a hypervisor for managing virtualized content}
 
-The chosen solution is Proxmox, an open source hypervisor that can provide container based virtual by way of open VZ.
-It supports guest operating system like Linux (KVM), Windows. It is enabled by the presence of integrated backup service.
+The chosen solution is Proxmox, an open source hypervisor that can provide container based virtual environment, using OpenVZ.
+It supports guest operating systems like Linux (KVM), Windows. It is enabled by the presence of integrated backup service.
 It delivers full system virtualization by the use of KVM.
 The Proxmox management interface can function using a normal browser.
-Proxmox is using the cluster mode, from a single page multiple servers can be managed.
-and can perform a direct migration between one host to the other.
-Lastly, Proxmox provides shell access to the KVM directly from its interface, using a Debian system. 
+Proxmox is using the cluster mode: from a single page multiple servers can be managed.
+It can also perform a direct migration from one host to another.
+Lastly, Proxmox provides shell access to the KVM directly from its interface, using a Debian system.
 
 \begin{center}
 
@@ -131,7 +130,7 @@ disaster recovery tools with the built-in web management interface.
 You may sometimes encounter the term KVM (Kernel-based Virtual Machine).
 It means that Qemu is running with the support of the virtualization
 processor extensions, via the Linux KVM module. In the context of
-Proxmox VE Qemu and KVM can be used interchangeably as Qemu in Proxmox
+Proxmox VE, Qemu and KVM can be used interchangeably as Qemu in Proxmox
 VE will always try to load the KVM module.
 
 \\
@@ -148,14 +147,14 @@ VE will always try to load the KVM module.
 We use an LDAP directory [RFC 4510].
 This allows a standardized representation of information (database - LDAP directory) as well as a standard query protocol widely deployed for this database.
 The chosen solution is the OpenLDAP software version 2.4.46, because of its
-maturity and protocol compliance. phpLDAPadmin is the web interface that
-allows the management of user accounts. one of the most important fields is
+maturity and protocol compliance. PhpLDAPadmin is the web interface that
+allows the management of user accounts. One of the most important fields is
 sshPublicKey because all the servers are configured to do LDAP queries
 during an SSH connection to list the authorized RSA keys.
-\\ We could have use a PAM setup with libpam-ldap but it seemed easier to specify
+\\ We could have used a PAM setup with libpam-ldap but it seemed easier to specify
 in ssh configuration files an AuthorizedKeyCommand that will reach all the
 RSA public keys on the LDAP server.
-\\ 
+\\
 *\url{https://ldap.com/basic-ldap-concepts/}
 
 \begin{center}
@@ -168,7 +167,7 @@ RSA public keys on the LDAP server.
 \subsubsection{Use of a tool allowing access to all virtualized machines while using the access control protocol cited above}
 \vspace{0.5cm}
 
-We select Ansible, an open source software that automates software
+We chose Ansible, an open source software that automates software
 provisioning, configuration management, and application deployment.
 Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
 \url{(https://www.ansible.com/)}
@@ -191,13 +190,13 @@ For now, Lynis is the best candidate. We will probably combine several tools lat
 Lynis is an extensible security audit tool for computer systems
 running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other
 Unix-derivatives.
-\\ 
+\\
 
 Lynis scanning is opportunistic, meaning it will only use what it can find, like available tools or libraries. The benefit is that no installation of other tools is needed, so you can keep your systems clean.
 By using this scanning method, the tool can run with almost no dependencies. Also, the more it finds, the more extensive the audit will be. In other words: Lynis will always perform scans that are customized to your system and two audits will never be the same.
 \\
 
-Many vulnerability scanners perform on a network level (outside). They can detect missing security patches due to discovered weaknesses. Still, in many cases leaks can be present while detection via the network is close to impossible. An additional downside is version banners on which some of the tools rely, providing you with a false positive when the software vendor is using a patched version. 
+Many vulnerability scanners perform on a network level (outside of the system). They can detect missing security patches due to discovered weaknesses. However, in many cases leaks can be present, and their detection via the network close to impossible. An additional downside is version banners on which some of the tools rely, providing you with a false positive when the software vendor is using a patched version.
 \\
 
 Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc.
@@ -236,8 +235,8 @@ Elastic Stack is the next evolution of the ELK Stack.\\ *
 
 The use of a framework associated with a certain number of libraries will
 allow us to obtain a modular and easy to use application.
-Symfony is a PHP framework that we used to manipulate, which is why we chose 
-to use this one. Moreover, we were able to verify that there were many 
+Symfony is a PHP framework that we used to manipulate, which is why we chose
+to use this one. Moreover, we were able to verify that there were many
 libraries usable by this framework allowing us to interface ELK with our web
 application. \\ *
 \url{(https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/)}\\
@@ -257,13 +256,13 @@ application. \\ *
 
 \subsection{Little update on tools}
 
-Flask framework imposed after further study of features
-necessary techniques for the smooth running of the project. The use of
-Proxmoxer (\url{https://github.com/swayf/proxmoxer}) was one of the reasons
-main movement to a python framework. \\
+We finally chose to use Flask framework instead of Symfony, after further study of the necessary features.
+The use of
+Proxmoxer (\url{https://github.com/swayf/proxmoxer}) was one of the main reasons for switching to a Python framework. \\
+
 
 Proxmoxer is a wrapper around the Proxmox REST API v2.
-It was inspired by slumber, but it dedicated only to Proxmox. It allows to use not only REST API over HTTPS, but the same api over ssh and pvesh utility.
+It was inspired by slumber, but it is dedicated only to Proxmox. It allows to use not only REST API over HTTPS, but the same API over ssh and pvesh utility as well.
 Like Proxmoxia it dynamically creates attributes which responds to the attributes you've attempted to reach.
 \\
 
@@ -291,20 +290,19 @@ Several physical servers (whose names are "Cody-Maverick", "L'OVNI" and "Shawan"
 \\
 
 To connect to different machines in the infrastructure, the application
-knows the IP addresses of the different machines thanks to the API of
-the hypervisor and RSA private keys must be filled in by the administrator
-system within the application to allow connection to
+knows the IP addresses of the different machines, thanks to the API of
+the hypervisor. RSA private keys must be filled in by the system administrator within the application to allow connection to
 different machines.
 
 \vspace{1cm}
 \subsubsection{Technical specs of the servers}
 
-The dual processor Dell PowerEdge 1950 delivers next generation performance in a 1U, rack dense chassis with Quad-Core Intel Xeon processors. This high concentration of computing power and redundancy makes the PowerEdge 1950 the perfect choice for high performance computing clusters (HPCC), SAN front-end, web and infrastructure applications, especially where data center real estate is at a premium. Outstanding manageability in this latest generation 1U server delivers new functionality for managing the servers from remote locations.
+The dual processor Dell PowerEdge 1950 delivers next generation performance in a 1U, rack dense chassis with Quad-Core Intel Xeon processors. This high concentration of computing power and redundancy makes the PowerEdge 1950 the perfect choice for high performance computing clusters (HPCC), SAN front-end, web and infrastructure applications. Outstanding manageability in this latest generation 1U server delivers new functionality for managing the servers from remote locations.
 
 \vspace{1cm}
 \subsubsection{Virtual LANs}
 
-A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2). LAN is the abbreviation for local area network and in this context virtual refers to a physical object recreated and altered by additional logic. VLANs work by applying tags to network frames and handling these tags in networking systems – creating the appearance and functionality of network traffic that is physically on a single network but acts as if it is split between separate networks. In this way, VLANs can keep network applications separate despite being connected to the same physical network, and without requiring multiple sets of cabling and networking devices to be deployed.
+A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2). LAN is the abbreviation for local area network and in this context, virtual refers to a physical object recreated and altered by additional logic. VLANs work by applying tags to network frames and handling these tags in networking systems – creating the appearance and functionality of network traffic that is physically on a single network, but acts as if it is split between separate networks. In this way, VLANs can keep network applications separate despite being connected to the same physical network, without requiring multiple sets of cabling and networking devices to be deployed.
 
 \\
 \vspace{1cm}
@@ -313,7 +311,7 @@ The three clustered servers are separated by three routers and we do not have ac
 \vspace{1cm}
 \subsubsection{Layer 2 ethernet bridging}
 
-Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as, "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network. 
+Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as, "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network.
 
 \pagebreak
 
@@ -329,7 +327,7 @@ Here is the detail of the architecture as currently designed for this project:
 
 \begin{itemize}
 \item
-  Flask application dialog with this hypervisor through its API, we
+  Flask application dialogs with this hypervisor through its API. We
   so use proxmoxer as a wrapper to interface with
   it.
 \item
@@ -338,10 +336,10 @@ Here is the detail of the architecture as currently designed for this project:
   qmu (Qemu / KVM Virtual Machine Manager).
 \item
   By using the SSH network protocol, the Ansible tool helps with the execution of
-  Lynis security audit tool on the different in order to get a
-  log file which will then parser and embed in the ELK stack, itself
+  Lynis security audit tool on the different containers. This generates a
+  log file which will then be parsed in the ELK stack, itself
   interfaced with the application. We thus obtain a complete report of the
-  security of every machine within the application
+  security of every machine within the application.
 \item
   User management of the application is performed at a base level
   postgresql data that the application accesses via the SQlachemy ORM.
@@ -353,10 +351,10 @@ Here is the detail of the architecture as currently designed for this project:
 \subsection{Scoring and standardization}
 
 \vspace{1cm}
-\\ 
+\\
 With Lynis, many tests are part of common security guidelines and standards,
-with on top additional security tests. After the scan a report will be displayed
-with all discovered findings. Our application will map these vulnerabilities with a CVSS Base, Temporal and Enrironmental Score 
+completed with additional security tests. After the scan a report will be displayed
+with all discovered vulnerabilities. Our application will map these vulnerabilities with a CVSS Base, Temporal and Enrironmental Score.
 
 \vspace{0.2cm}
 \begin{center}
@@ -368,7 +366,7 @@ with all discovered findings. Our application will map these vulnerabilities wit
 \vspace{1cm}
 
 \\
-The Common Vulnerability Scoring System (CVSS) is a free and open industry standard for assessing the severity of computer system security vulnerabilities. CVSS attempts to assign severity scores to vulnerabilities, allowing responders to prioritize responses and resources according to threat. Scores are calculated based on a formula that depends on several metrics that approximate ease of exploit and the impact of exploit. Scores range from 0 to 10, with 10 being the most severe. While many utilize only the CVSS Base score for determining severity, temporal and environmental scores also exist, to factor in availability of mitigations and how widespread vulnerable systems are within an organization, respectively.
+The Common Vulnerability Scoring System (CVSS) is a free and open industry standard for assessing the severity of computer system security vulnerabilities. CVSS attempts to assign severity scores to vulnerabilities, allowing responders to prioritize responses and resources according to threat. Scores are calculated based on a formula that depends on several metrics, that approximate ease of exploit and the impact of exploit. Scores range from 0 to 10, with 10 being the most severe. While many utilize only the CVSS Base score for determining severity, temporal and environmental scores also exist, to factor in availability of mitigations and how widespread vulnerable systems are within an organization, respectively.
 
 \\
 \vspace{0.2cm}
@@ -423,7 +421,7 @@ This admin panel allows to manage the administrators of the platform
 \includegraphics[width=0.98\textwidth]{images/flask-application-1.png}
 \end{center}
 
-\pagebreak 
+\pagebreak
 
 \subsection{CT/VM view}
 \vspace{1cm}
@@ -435,7 +433,7 @@ This admin panel allows to manage the administrators of the platform
 \includegraphics[width=0.98\textwidth]{images/flask-application-3.png}
 \end{center}
 
-\pagebreak 
+\pagebreak
 
 \section{Conclusion and perspectives}
 
