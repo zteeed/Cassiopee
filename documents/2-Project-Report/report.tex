@@ -57,7 +57,7 @@ In order to provide a realistic framework for the implementation of such a tool,
 \vspace{0.5cm}
 \subsubsection{Setting up a security scan tools}
 
-The deployment of security audit tools for computer systems running Linux at least.
+This tool mainly focused on the deployment of security audit tools for computer systems running Linux at least. Windows security audit is an optional feature that is a project-building perspective.
 
 \vspace{0.5cm}
 \subsubsection{Management of the logs}
@@ -71,17 +71,19 @@ by the log management tool.
 
 
 \vspace{0.5cm}
-\subsubsection{Specific competencies (in addition to PRO4501):}
-UNIX-like platforms (Linux, MacOS) and associated tools, including
-software development tools (editors, interpretors, etc.). We are working on a
-server without a graphical environment so a text editor like VIM should be
-optimized as an IDE with some plugins in order to increase our efficiency on the
-server side, on the development and deployment of the tool.
-Coding in JavaScript and / or scripting languages, including referenced
-frameworks for JavaScript development (e.g.~Node.js, Angular.js, etc.)
-As Elasticsearch and Kibana are working as APIs, the frontend development part should work
-as a REST API too.
+\subsubsection{Build an opensource project}
 
+This tool is opensource but need some competencies required. It needs to master UNIX-like platforms (Linux, MacOS) and associated tools, including software development tools (editors, interpretors, etc.). 
+%It works on a
+%server without a graphical environment so a text editor like VIM should be
+%Moptimized as an IDE with some plugins in order to increase the efficiency on the
+%server side, on the development and deployment of the tool.
+Coding in JavaScript and / or scripting languages, including referenced
+frameworks for JavaScript development (e.g.~Node.js, Angular.js, etc.) might be usefull.
+As Elasticsearch and Kibana are working as APIs, the frontend development part works
+as a REST API (Representational State Transfer), the REST standards has to be mastered as well in order to contribute on this project.
+
+\pagebreak
 
 \vspace{0.5cm}
 \subsubsection{Learning objectives}
@@ -93,7 +95,7 @@ software and integration. \\
 
 \vspace{0.5cm}
 \subsubsection{Documentation}
-The use of English for our project is primodial. Indeed, all the technical
+The use of English for our project is essential. Indeed, all the technical
 documentation associated with the resources used is in English and we are used
 to working with resources in English because they are much more complete. In
 addition, the community providing these resources exchanges mainly in English. In order
@@ -124,17 +126,15 @@ Lastly, Proxmox provides shell access to the KVM directly from its interface, us
 \end{figure}
 
 \vspace{1cm}
-Proxmox VE tightly integrates KVM hypervisor and LXC
+Proxmox VE tightly integrates KVM (Kernel-based Virtual Machine) hypervisor and LXC
 containers, software-defined storage and networking functionality on a
 single platform, and easily manages high availability clusters and
 disaster recovery tools with the built-in web management interface.
 
 \vspace{0.5cm}
-You may sometimes encounter the term KVM (Kernel-based Virtual Machine).
-It means that Qemu is running with the support of the virtualization
+Qemu is running with the support of the virtualization
 processor extensions, via the Linux KVM module. In the context of
-Proxmox VE, Qemu and KVM can be used interchangeably as Qemu in Proxmox
-VE will always try to load the KVM module.
+Proxmox VE, Qemu and KVM can be used interchangeably. Indeed, Qemu will always try to load the KVM module in Proxmox.
 
 \\
 \vspace{1cm}
@@ -221,8 +221,7 @@ Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and
 analytics engine. Logstash is a server‑side data processing pipeline
 that ingests data from multiple sources simultaneously, transforms it,
 and then sends it to a stash like Elasticsearch. Kibana lets
-users visualize data with charts and graphs in Elasticsearch. The
-Elastic Stack is the next evolution of the ELK Stack.\\ *
+users visualize data with charts and graphs in Elasticsearch.\\ *
 \url{(https://www.elastic.co/fr/elk-stack)}\\
 
 
@@ -237,7 +236,7 @@ Elastic Stack is the next evolution of the ELK Stack.\\ *
 
 The use of a framework associated with a certain number of libraries will
 allow us to obtain a modular and easy to use application.
-Symfony is a PHP framework that we used to manipulate, which is why we chose
+Symfony is a PHP framework that we use to work with, which is why we chose
 to use this one. Moreover, we were able to verify that there were many
 libraries usable by this framework allowing us to interface ELK with our web
 application. \\ *
@@ -254,17 +253,22 @@ application. \\ *
 
 \section{Implementation of the project}
 
-\subsection{Little update on tools}
+\subsection{Update about the web framework}
 
-We finally chose to use Flask framework instead of Symfony, after further study of the necessary features.
-The use of
-Proxmoxer (\url{https://github.com/swayf/proxmoxer}) was one of the main reasons for switching to a Python framework. \\
+We finally chose to use Flask framework instead of Symfony, after further study of the necessary features:
+\begin{itemize}
+    \item Elegant syntax, clear namespaces (good code-maintainability in long run).
+    \item Rich ecosystem and libraries (sqlalchemy, numpy, scipy, matplotlib).
+    \item Out of box support for everything (such as large floating point numbers).
+    \item Package management using pip is a breeze.
+\end{itemize}
 
+The use of Proxmoxer (\url{https://github.com/swayf/proxmoxer}) is also one of the main reasons for switching to a Python framework.
+\\
 
 Proxmoxer is a wrapper around the Proxmox REST API v2.
 It was inspired by slumber, but it is dedicated only to Proxmox. It allows to use not only REST API over HTTPS, but the same API over ssh and pvesh utility as well.
 Like Proxmoxia it dynamically creates attributes which responds to the attributes you've attempted to reach.
-\\
 
 \begin{figure}[!h]
   \centering
@@ -273,6 +277,7 @@ Like Proxmoxia it dynamically creates attributes which responds to the attribute
   \label{Proxmoxer}
 \end{figure}
 
+\pagebreak
 
 \subsection{Network Architecture}
 
@@ -285,15 +290,14 @@ Like Proxmoxia it dynamically creates attributes which responds to the attribute
   \label{Proxmoxer}
 \end{figure}
 
-\pagebreak
-
-Several physical servers (whose names are "Cody-Maverick", "L'OVNI" and "Shawan") have been clustered on which are deployed the Proxmox hypervisor. These are DELL PowerEdge 1950 servers.
+Three physical servers (whose names are "Cody-Maverick", "L'OVNI" and "Shawan") have been clustered on which are deployed the Proxmox hypervisor. These are DELL PowerEdge 1950 servers. The two Gigabit switches are Cisco SG500-52P 52-port Gigabit POE Stackable Managed Switch. The Megabit one is a Cisco Catalyst 3750.
 
 \\
+\vspace{1cm}
 
 To connect to different machines in the infrastructure, the application
 knows the IP addresses of the different machines, thanks to the API of
-the hypervisor. RSA private keys must be filled in by the system administrator within the application to allow connection to
+the hypervisor. RSA private keys must be inserted in by the system administrator within the application to allow connection to
 different machines.
 
 \vspace{1cm}
@@ -301,7 +305,8 @@ different machines.
 
 The dual processor Dell PowerEdge 1950 delivers next generation performance in a 1U, rack dense chassis with Quad-Core Intel Xeon processors. This high concentration of computing power and redundancy makes the PowerEdge 1950 the perfect choice for high performance computing clusters (HPCC), SAN front-end, web and infrastructure applications. Outstanding manageability in this latest generation 1U server delivers new functionality for managing the servers from remote locations.
 
-\vspace{1cm}
+\pagebreak
+
 \subsubsection{Virtual LANs}
 
 A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2). LAN is the abbreviation for local area network and in this context, virtual refers to a physical object recreated and altered by additional logic. VLANs work by applying tags to network frames and handling these tags in networking systems – creating the appearance and functionality of network traffic that is physically on a single network, but acts as if it is split between separate networks. In this way, VLANs can keep network applications separate despite being connected to the same physical network, without requiring multiple sets of cabling and networking devices to be deployed.
@@ -313,7 +318,7 @@ The three clustered servers are separated by three routers and we do not have ac
 \vspace{1cm}
 \subsubsection{Layer 2 ethernet bridging}
 
-Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as, "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network.
+Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network.
 
 \pagebreak
 
@@ -331,7 +336,7 @@ Here is the detail of the architecture as currently designed for this project:
 
 \begin{itemize}
 \item
-  Flask application dialogs with this hypervisor through its API. We
+  Flask application interacts with this hypervisor through its API. We
   so use proxmoxer as a wrapper to interface with
   it.
 \item
