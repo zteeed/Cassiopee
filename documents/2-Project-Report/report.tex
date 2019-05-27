@@ -57,11 +57,12 @@ In order to provide a realistic framework for the implementation of such a tool,
 \vspace{0.5cm}
 \subsubsection{Setting up a security scan tools}
 
-This tool mainly focused on the deployment of security audit tools for computer systems running Linux at least. Windows security audit is an optional feature that is a project-building perspective.
+Our project focuses on developping a security audit tool for systems running UNIX environment, such as Linux or MacOS.
+Windows security audit is an optional feature that is a project-building perspective.
 
 \vspace{0.5cm}
 \subsubsection{Management of the logs}
-The management of the logs associated with these audits, helps detect evidence of an attack in the logs of network devices, servers, and applications. The web interface aggregates and manages log data from built-in detection capabilities and from logs produced by other devices in your environment. It automatically executes advanced analysis, producing normalized events and correlating them to produce actionable intelligence, alerting us of any threats to the environment.
+The management of the logs associated with these audits helps detect evidence of an attack in the logs of network devices, servers, and applications. The web interface aggregates and manages log data from built-in detection capabilities and from logs produced by other devices in your environment. It automatically executes advanced analysis, producing normalized events and correlating them to produce actionable intelligence, alerting us of any threats to the environment.
 
 
 \vspace{0.5cm}
@@ -73,15 +74,16 @@ by the log management tool.
 \vspace{0.5cm}
 \subsubsection{Build an opensource project}
 
-This tool is opensource but need some competencies required. It needs to master UNIX-like platforms (Linux, MacOS) and associated tools, including software development tools (editors, interpretors, etc.). 
+Particpating in the development of this opensource tool requires competences such as mastering UNIX-like platforms (Linux, MacOS),
+and associated tools (editors, interpretors, etc.).
 %It works on a
 %server without a graphical environment so a text editor like VIM should be
 %Moptimized as an IDE with some plugins in order to increase the efficiency on the
 %server side, on the development and deployment of the tool.
 Coding in JavaScript and / or scripting languages, including referenced
 frameworks for JavaScript development (e.g.~Node.js, Angular.js, etc.) might be usefull.
-As Elasticsearch and Kibana are working as APIs, the frontend development part works
-as a REST API (Representational State Transfer), the REST standards has to be mastered as well in order to contribute on this project.
+As Elasticsearch and Kibana are working as APIs, and frontend development part works
+as a REST API (Representational State Transfer), REST standards have to be mastered as well in order to contribute on this project.
 
 \pagebreak
 
@@ -132,7 +134,7 @@ single platform, and easily manages high availability clusters and
 disaster recovery tools with the built-in web management interface.
 
 \vspace{0.5cm}
-Qemu is running with the support of the virtualization
+Qemu is running with the support of virtualization
 processor extensions, via the Linux KVM module. In the context of
 Proxmox VE, Qemu and KVM can be used interchangeably. Indeed, Qemu will always try to load the KVM module in Proxmox.
 
@@ -236,9 +238,9 @@ users visualize data with charts and graphs in Elasticsearch.\\ *
 
 The use of a framework associated with a certain number of libraries will
 allow us to obtain a modular and easy to use application.
-Symfony is a PHP framework that we use to work with, which is why we chose
+Symfony is a PHP framework that we used to work with, which is why we chose
 to use this one. Moreover, we were able to verify that there were many
-libraries usable by this framework allowing us to interface ELK with our web
+libraries usable in this framework that would allow us to interface ELK with our web
 application. \\ *
 \url{(https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/)}\\
 
@@ -253,11 +255,11 @@ application. \\ *
 
 \section{Implementation of the project}
 
-\subsection{Update about the web framework}
+\subsection{Update on the web development framework}
 
-We finally chose to use Flask framework instead of Symfony, after further study of the necessary features:
+We finally chose to use Flask framework instead of Symfony, after further study of the following necessary features:
 \begin{itemize}
-    \item Elegant syntax, clear namespaces (good code-maintainability in long run).
+    \item Elegant syntax, clear namespaces (providing good code-maintainability in the long term).
     \item Rich ecosystem and libraries (sqlalchemy, numpy, scipy, matplotlib).
     \item Out of box support for everything (such as large floating point numbers).
     \item Package management using pip is a breeze.
@@ -297,7 +299,7 @@ Three physical servers (whose names are "Cody-Maverick", "L'OVNI" and "Shawan") 
 
 To connect to different machines in the infrastructure, the application
 knows the IP addresses of the different machines, thanks to the API of
-the hypervisor. RSA private keys must be inserted in by the system administrator within the application to allow connection to
+the hypervisor. RSA private keys must be inserted in the application by the system administrator to allow connection to
 different machines.
 
 \vspace{1cm}
@@ -318,7 +320,7 @@ The three clustered servers are separated by three routers and we do not have ac
 \vspace{1cm}
 \subsubsection{Layer 2 ethernet bridging}
 
-Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined for their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network.
+Layer-2 bridging works by putting one physical and one virtual Ethernet adapter into a mode where they can receive traffic that is not destined to their address. This traffic is selectively sent onto the other network according to the IEEE 802.1D standard, known as "bridging" the frames. Frames transmitted by virtual Ethernet adapters on the same VLAN as the bridging virtual Ethernet adapter can be sent to the physical network. Frames sent from the physical network can be received by adapters on the virtual network.
 
 \pagebreak
 
