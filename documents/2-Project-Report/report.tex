@@ -28,6 +28,10 @@
 
 \pagebreak
 
+\listoffigures
+
+\pagebreak
+
 % \section{Cassiopée Project: Development and deployment of an automated IT security audit tool in a
 % virtualized environment.}
 \section{Start of the project}
@@ -112,13 +116,12 @@ Proxmox is using the cluster mode: from a single page multiple servers can be ma
 It can also perform a direct migration from one host to another.
 Lastly, Proxmox provides shell access to the KVM directly from its interface, using a Debian system.
 
-\begin{center}
-
-\includegraphics[width=0.6\textwidth]{images/proxmox-stack-example.jpg}
-\\
-\underline{Proxmox stack architecture}
-
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/proxmox-stack-example.jpg}
+  \caption{Proxmox stack architecture}
+  \label{Proxmox}
+\end{figure}
 
 \vspace{1cm}
 Proxmox VE tightly integrates KVM hypervisor and LXC
@@ -157,13 +160,13 @@ RSA public keys on the LDAP server.
 \\
 *\url{https://ldap.com/basic-ldap-concepts/}
 
-\begin{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/ldap-example.png}
+  \caption{Web Based LDAP Client}
+  \label{LDAP}
+\end{figure}
 
-\includegraphics[width=0.75\textwidth]{images/ldap-example.jpg}
-
-\end{center}
-
-\vspace{-1.3cm}
 \subsubsection{Use of a tool allowing access to all virtualized machines while using the access control protocol cited above}
 \vspace{0.5cm}
 
@@ -172,13 +175,12 @@ provisioning, configuration management, and application deployment.
 Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
 \url{(https://www.ansible.com/)}
 
-\begin{center}
-
-\includegraphics[width=0.75\textwidth]{images/ansible-example.jpg}
-\\
-\underline{Ansible playbooks deployment}
-
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/ansible-example.jpg}
+  \caption{Ansible playbooks deployment}
+  \label{Ansible}
+\end{figure}
 
 \pagebreak
 
@@ -198,18 +200,16 @@ By using this scanning method, the tool can run with almost no dependencies. Als
 Many vulnerability scanners perform on a network level (outside of the system). They can detect missing security patches due to discovered weaknesses. However, in many cases leaks can be present, and their detection via the network close to impossible. An additional downside is version banners on which some of the tools rely, providing you with a false positive when the software vendor is using a patched version.
 \\
 
-Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc.
-\\
-
-Depending on your needs and how in-depth a security scan has to be, scanning from the inside might be a preferred method. More information will be available, while the chance of getting false positives is lower as well.
+Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc. Depending on your needs and how in-depth a security scan has to be, scanning from the inside might be a preferred method. More information will be available, while the chance of getting false positives is lower as well.
 
 %\vspace{0.2cm}
 %* \url{(https://cisofy.com/lynis/)}
-\begin{center}
-\includegraphics[width=0.95\textwidth]{images/lynis-example.png}
-\\
-\underline{Output from Lynis scan}
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.95\textwidth]{images/lynis-example.png}
+  \caption{Output from Lynis scan}
+  \label{Lynis}
+\end{figure}
 
 \pagebreak
 
@@ -224,11 +224,14 @@ and then sends it to a stash like Elasticsearch. Kibana lets
 users visualize data with charts and graphs in Elasticsearch. The
 Elastic Stack is the next evolution of the ELK Stack.\\ *
 \url{(https://www.elastic.co/fr/elk-stack)}\\
-\begin{center}
 
-\includegraphics[width=0.75\textwidth]{images/elk-example.jpg}
 
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/elk-example.png}
+  \caption{ELK stack interaction with different applications based on Log file}
+  \label{ELK}
+\end{figure}
 
 \subsubsection{Web interface development}
 
@@ -240,14 +243,12 @@ libraries usable by this framework allowing us to interface ELK with our web
 application. \\ *
 \url{(https://pehapkari.cz/blog/2017/10/22/connecting-monolog-with-ELK/)}\\
 
-\begin{center}
-
-\includegraphics[width=0.65\textwidth]{images/symfony-example.jpg}
-\\
-\underline{First web application architecture}
-
-\end{center}
-
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.65\textwidth]{images/symfony-example.jpg}
+  \caption{First web application architecture}
+  \label{Symfony}
+\end{figure}
 
 \pagebreak
 
@@ -265,22 +266,24 @@ It was inspired by slumber, but it is dedicated only to Proxmox. It allows to us
 Like Proxmoxia it dynamically creates attributes which responds to the attributes you've attempted to reach.
 \\
 
-\lstinputlisting[language=Python]{scripts/proxmoxer.py}
-\begin{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.99\textwidth]{images/proxmoxer.png}
+  \caption{Snippet to get LXC and Qemu data over Proxmox API}
+  \label{Proxmoxer}
+\end{figure}
 
-\underline{Snippet to get LXC and Qemu data over Proxmox API}
-
-\end{center}
 
 \subsection{Network Architecture}
 
 \vspace{2cm}
 
-\begin{center}
-\includegraphics[width=0.95\textwidth]{images/reseau.png}
-\\
-\underline{Schema of the network architecture}
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.95\textwidth]{images/reseau.png}
+  \caption{Schema of the network architecture}
+  \label{Proxmoxer}
+\end{figure}
 
 \pagebreak
 
@@ -318,11 +321,13 @@ Layer-2 bridging works by putting one physical and one virtual Ethernet adapter 
 
 Here is the detail of the architecture as currently designed for this project:
 \vspace{1cm}
-\begin{center}
-\includegraphics[width=0.90\textwidth]{images/schema.png}
-\\
-\underline{Application architecture schema}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.90\textwidth]{images/schema.png}
+  \caption{Application architecture schema}
+  \label{ArchitectureSchema}
+\end{figure}
 
 \begin{itemize}
 \item
@@ -356,11 +361,13 @@ completed with additional security tests. After the scan a report will be displa
 with all discovered vulnerabilities. Our application will map these vulnerabilities with a CVSS Base, Temporal and Enrironmental Score.
 
 \vspace{0.2cm}
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/cvss.png}
-\\
-\underline{Common Vulnerability Scoring System Version 3.0 Calculator}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/cvss.png}
+  \caption{Common Vulnerability Scoring System Version 3.0 Calculator}
+  \label{ArchitectureSchema}
+\end{figure}
 
 \vspace{1cm}
 
@@ -377,60 +384,74 @@ The Common Vulnerability Scoring System (CVSS) is a free and open industry stand
 
 \subsection{Login View}
 url: \url{https://cassiopee.hackademint.org/login}
-\\
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-01.png}
-\\
-\underline{Screenshot of Login View}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-01.png}
+  \caption{Screenshot of Login View}
+  \label{LoginView}
+\end{figure}
 
 \subsection{Forgot View}
 url: \url{https://cassiopee.hackademint.org/forgot}
-\\
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-02.png}
-\\
-\underline{Screenshot of Forgot View}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-02.png}
+  \caption{Screenshot of Forgot View}
+  \label{ForgotView}
+\end{figure}
 
 \pagebreak
 
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-021.png}
-\\
-\underline{Screenshot of Email sent by Forgot View}
-\end{center}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-021.png}
+  \caption{Screenshot of Email sent by Forgot View}
+  \label{ForgotViewSent}
+\end{figure}
 
 
 \subsection{Admin Panel}
 url: \url{https://cassiopee.hackademint.org/admin/users/}
-\\
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-0.png}
-\\
-\underline{Screenshot of Admin Panel}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-0.png}
+  \caption{Screenshot of Admin Panel}
+  \label{AdminPanel}
+\end{figure}
 
 This admin panel allows to manage the administrators of the platform
 
+\pagebreak
 
 \subsection{Index View}
-\vspace{1cm}
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-1.png}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-1.png}
+  \caption{Screenshot of Index View}
+  \label{IndexView}
+\end{figure}
 
 \pagebreak
 
 \subsection{CT/VM view}
-\vspace{1cm}
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-2.png}
-\end{center}
-\vspace{1cm}
-\begin{center}
-\includegraphics[width=0.98\textwidth]{images/flask-application-3.png}
-\end{center}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-2.png}
+  \caption{Screenshot of CT/VM View 1}
+  \label{CTView}
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/flask-application-3.png}
+  \caption{Screenshot of CT/VM View 2}
+  \label{CTView2}
+\end{figure}
 
 \pagebreak
 
