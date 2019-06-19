@@ -67,14 +67,14 @@ The management of the logs associated with these audits helps detect evidence of
 
 \vspace{0.5cm}
 \subsubsection{Web interface}
-The development of a web interface allowing data management and visibility over the data produced
+The development of a web interface is essential for data management and visibility over the data produced
 by the log management tool.
 
 
 \vspace{0.5cm}
 \subsubsection{Build an opensource project}
 
-Particpating in the development of this opensource tool requires competences such as mastering UNIX-like platforms (Linux, MacOS),
+This project is making part of opensource tools. This one requires competences such as mastering UNIX-like platforms (Linux, MacOS),
 and associated tools (editors, interpretors, etc.).
 %It works on a
 %server without a graphical environment so a text editor like VIM should be
@@ -89,9 +89,7 @@ as a REST API (Representational State Transfer), REST standards have to be maste
 
 \vspace{0.5cm}
 \subsubsection{Learning objectives}
-Processing of accessible textual data (coherence management, etc.)
-, the presentation and analysis of textual data as well as the understanding of cybersecurity
-software and integration. \\
+An objective is to process accessible textual data (coherence management, etc.) by making a presentation and an analysis of this textual data as well as we need to understand standarts of cybersecurity softwares and integration. \\
 
 
 
@@ -189,7 +187,10 @@ Ansible connects via SSH, remote PowerShell or via other remote APIs.\\ *
 \subsubsection{Implementation of a list of tools allowing the automated audits added to our
   personal contribution}
 
-For now, Lynis is the best candidate. We will probably combine several tools later.
+
+
+For now, Lynis is the best candidate because many software solutions are too complicated. Most vendors even sell trainings to use their products.
+Lynis Enterprise is easy to use. For example: the first audit can be done in less than 3 minutes. We will probably combine several tools later.
 Lynis is an extensible security audit tool for computer systems
 running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other
 Unix-derivatives.
@@ -202,7 +203,8 @@ By using this scanning method, the tool can run with almost no dependencies. Als
 Many vulnerability scanners perform on a network level (outside of the system). They can detect missing security patches due to discovered weaknesses. However, in many cases leaks can be present, and their detection via the network close to impossible. An additional downside is version banners on which some of the tools rely, providing you with a false positive when the software vendor is using a patched version.
 \\
 
-Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc. Depending on your needs and how in-depth a security scan has to be, scanning from the inside might be a preferred method. More information will be available, while the chance of getting false positives is lower as well.
+Lynis focuses on scanning from the inside, on the system itself. This doesn’t mean it has to be installed on the system though. Lynis can run from local or external storage and only requires root permissions. The big benefit from running it on the system itself is that all information is available, including running processes, open network ports, being able to discover user accounts etc.
+%Depending on your needs and how in-depth a security scan has to be, scanning from the inside might be a preferred method. More information will be available, while the chance of getting false positives is lower as well.
 
 %\vspace{0.2cm}
 %* \url{(https://cisofy.com/lynis/)}
@@ -262,7 +264,7 @@ We finally chose to use Flask framework instead of Symfony, after further study 
     \item Elegant syntax, clear namespaces (providing good code-maintainability in the long term).
     \item Rich ecosystem and libraries (sqlalchemy, numpy, scipy, matplotlib).
     \item Out of box support for everything (such as large floating point numbers).
-    \item Package management using pip is a breeze.
+    \item Package management using pip.
 \end{itemize}
 
 The use of Proxmoxer (\url{https://github.com/swayf/proxmoxer}) is also one of the main reasons for switching to a Python framework.
