@@ -1,4 +1,4 @@
-# Proxmox Security Integration Tool
+# Cassiopée
 > Development and deployment of an automated IT security audit tool in a virtualized environment.
 
 ## Our project
